@@ -34,7 +34,7 @@ function Header() {
         </nav>
       </div>
       <div className="ticker" aria-label="QUAD announcement">
-        <div className="ticker-track"><span>THEY KEPT SAYING QUADRILLIONS ✳ WE MADE IT A TICKER ✳ ONE QUADRILLION = 10¹⁵ ✳</span><span aria-hidden="true">THEY KEPT SAYING QUADRILLIONS ✳ WE MADE IT A TICKER ✳ ONE QUADRILLION = 10¹⁵ ✳</span></div>
+        <div className="ticker-track"><span>THEY KEPT SAYING QUADRILLIONS  /  WE MADE IT A TICKER  /  ONE QUADRILLION = 10¹⁵  /  </span><span aria-hidden="true">THEY KEPT SAYING QUADRILLIONS  /  WE MADE IT A TICKER  /  ONE QUADRILLION = 10¹⁵  /  </span></div>
       </div>
     </>
   )
