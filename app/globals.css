@@ -18,7 +18,7 @@ body { margin: 0; background: var(--ivory); color: var(--ink); font-family: Aria
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 
-.quad-page { min-height: 100vh; overflow: hidden; background-color: var(--ivory); background-image: radial-gradient(rgba(11,41,38,.2) 1px, transparent 1px); background-size: 8px 8px; }
+.quad-page { min-height: 100vh; overflow: hidden; background-color: var(--ivory); background-image: radial-gradient(rgba(11,41,38,.145) .8px, transparent .8px); background-size: 7px 7px; }
 .site-header { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1440px; height: 78px; padding: 0 clamp(20px, 5vw, 72px); margin: 0 auto; background: color-mix(in srgb, var(--ivory) 94%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800; letter-spacing: .08em; }
 .brand-logo { width: 46px; height: 46px; object-fit: contain; }
