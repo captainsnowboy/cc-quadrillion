@@ -60,14 +60,13 @@ export default function Page() {
         <div className="hero-copy">
           <p className="eyebrow">COMMUNITY MEME / CANTON NETWORK</p>
           <h1 id="hero-title"><span>QUADRILLION</span><em>AFTER A TRILLION.</em></h1>
-          <p className="hero-description">They kept saying quadrillions. We made it a ticker.</p>
+          <p className="hero-description">They kept saying <strong>quadrillions.</strong><br />We made it a ticker.</p>
           <div className="hero-actions">
             <button className="buy-button" type="button">BUY $QUAD <span aria-hidden="true">↗</span></button>
             <a className="scroll-link" href="#what-is-this">WHAT IS THIS? <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <FloatingNote />
-        <div className="hero-index" aria-hidden="true">001 <span /> COMMUNITY ISSUE</div>
       </section>
       <div id="what-is-this" className="anchor-target" aria-hidden="true" />
     </main>
