@@ -1,47 +1,77 @@
+'use client'
+
+import Image from 'next/image'
+import { useState } from 'react'
+
+const navItems = [
+  { label: 'Why QUAD', href: '#why-quad' },
+  { label: 'Memes', href: '#memes' },
+  { label: 'Receipts', href: '#receipts' },
+  { label: 'Bridge to Canton', href: '#bridge' },
+]
+
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  return (
+    <>
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="QUAD home">
+          <Image className="brand-logo" src="/quad-logo.png" alt="QUAD 10 to the 15th logo" width={48} height={48} priority />
+          <span>$QUAD</span>
+        </a>
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
+        </nav>
+        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen((open) => !open)}>
+          <span>{menuOpen ? 'Close' : 'Menu'}</span>
+          <span className="menu-lines" aria-hidden="true"><i /><i /></span>
+        </button>
+      </header>
+      <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} id="mobile-menu" aria-hidden={!menuOpen}>
+        <nav aria-label="Mobile navigation">
+          {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}
+        </nav>
+      </div>
+      <div className="ticker" aria-label="QUAD announcement">
+        <div className="ticker-track"><span>THEY KEPT SAYING QUADRILLIONS ✳ WE MADE IT A TICKER ✳ ONE QUADRILLION = 10¹⁵ ✳</span><span aria-hidden="true">THEY KEPT SAYING QUADRILLIONS ✳ WE MADE IT A TICKER ✳ ONE QUADRILLION = 10¹⁵ ✳</span></div>
+      </div>
+    </>
+  )
+}
+
+function FloatingNote() {
+  return (
+    <div className="artwork" aria-label="QUADRILLION novelty banknote">
+      <div className="orbit orbit-one" aria-hidden="true" />
+      <div className="orbit orbit-two" aria-hidden="true" />
+      <div className="note-safe-zone">
+        <Image className="banknote" src="/quadrillion-banknote.jpeg" alt="A fictional ten-dollar QUADRILLION novelty banknote" width={1200} height={550} priority />
+      </div>
+      <span className="art-label art-label-left">A VERY LARGE<br />IDEA</span>
+      <span className="art-label art-label-right">EST. 10¹⁵<br />CANTON</span>
+    </div>
+  )
+}
+
 export default function Page() {
   return (
-    <main
-      style={{
-        colorScheme: 'light dark',
-        position: 'relative',
-        display: 'flex',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'light-dark(#fff, #000)',
-        color: 'light-dark(#000, #fff)',
-      }}
-    >
-      <svg
-        aria-hidden="true"
-        style={{ width: 80, height: 80 }}
-        width={80}
-        height={80}
-        fill="none"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      >
-        <path
-          d="M14.2 14.2H17V6.9375C17 4.76288 15.2371 3 13.0625 3H5.8V5.8M14.2 14.2V7.79063L7.79062 14.2H14.2ZM14.2 14.2V17H6.9375C4.76288 17 3 15.2371 3 13.0625V5.8H5.8M5.8 5.8V12.2313L12.2313 5.8H5.8Z"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <p
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: 'calc(50% + 56px)',
-          transform: 'translateX(-50%)',
-          whiteSpace: 'nowrap',
-          fontSize: '14px',
-          fontWeight: 500,
-          color: 'light-dark(#71717a, #a1a1aa)',
-        }}
-      >
-        Your v0 generation will show here.
-      </p>
+    <main id="top" className="quad-page">
+      <Header />
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow">COMMUNITY MEME / CANTON NETWORK</p>
+          <h1 id="hero-title"><span>QUADRILLION</span><em>AFTER A TRILLION.</em></h1>
+          <p className="hero-description">They kept saying quadrillions. We made it a ticker.</p>
+          <div className="hero-actions">
+            <button className="buy-button" type="button">BUY $QUAD <span aria-hidden="true">↗</span></button>
+            <a className="scroll-link" href="#what-is-this">WHAT IS THIS? <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <FloatingNote />
+        <div className="hero-index" aria-hidden="true">001 <span /> COMMUNITY ISSUE</div>
+      </section>
+      <div id="what-is-this" className="anchor-target" aria-hidden="true" />
     </main>
   )
 }
