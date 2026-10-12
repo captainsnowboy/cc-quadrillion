@@ -34,7 +34,7 @@ function Header() {
         </nav>
       </div>
       <div className="ticker" aria-label="QUAD announcement">
-        <div className="ticker-track"><span>THEY KEPT SAYING QUADRILLIONS  /  WE MADE IT A TICKER  /  ONE QUADRILLION = 10¹⁵  /  </span><span aria-hidden="true">THEY KEPT SAYING QUADRILLIONS  /  WE MADE IT A TICKER  /  ONE QUADRILLION = 10¹⁵  /  </span></div>
+        <div className="ticker-track"><span>THEY KEPT SAYING QUADRILLIONS <b>◆</b> WE MADE IT A TICKER <b>◆</b> ONE QUADRILLION = 10¹⁵ <b>◆</b></span><span aria-hidden="true">THEY KEPT SAYING QUADRILLIONS <b>◆</b> WE MADE IT A TICKER <b>◆</b> ONE QUADRILLION = 10¹⁵ <b>◆</b></span></div>
       </div>
     </>
   )
@@ -48,8 +48,6 @@ function FloatingNote() {
       <div className="note-safe-zone">
         <Image className="banknote" src="/quadrillion-banknote.jpeg" alt="A fictional ten-dollar QUADRILLION novelty banknote" width={1200} height={550} priority />
       </div>
-      <span className="art-label art-label-left">A VERY LARGE<br />IDEA</span>
-      <span className="art-label art-label-right">EST. 10¹⁵<br />CANTON</span>
     </div>
   )
 }
