@@ -63,7 +63,7 @@ export default function Page() {
           <p className="hero-description">They kept saying <strong>quadrillions.</strong><br />We made it a ticker.</p>
           <div className="hero-actions">
             <button className="buy-button" type="button">BUY $QUAD <span aria-hidden="true">↗</span></button>
-            <a className="scroll-link" href="#what-is-this">WHAT IS THIS? <span aria-hidden="true">↓</span></a>
+            <a className="scroll-link" href="#what-is-this">WHAT IS THIS? <span className="scroll-arrow" aria-hidden="true">↓</span></a>
           </div>
         </div>
         <FloatingNote />
