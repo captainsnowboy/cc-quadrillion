@@ -9,6 +9,7 @@ const navItems = [
   { label: 'Memes', href: '#memes' },
   { label: 'Receipts', href: '#receipts' },
   { label: 'Bridge to Canton', href: '#bridge' },
+  { label: 'How to Buy $QUAD', href: '#buy-quad' },
 ]
 
 function Header() {
@@ -98,7 +99,43 @@ function ContentSections() {
         </div>
       </section>
       <BillSection />
+      <BridgeSection />
+      <BuyQuadSection />
     </div>
+  )
+}
+
+function BridgeSection() {
+  const steps = [
+    ['01', 'CREATE YOUR ONESWAP ACCOUNT', 'Sign up with your email and password, then finish verification. OneSwap creates the platform wallet used by the trading app.', '↗'],
+    ['02', 'FUND THE PLATFORM WALLET', 'Use a live CC route’s exact input asset. Copy your Canton party ID or receive QR from OneSwap, then send that asset from its issuer, an exchange, or another Canton wallet.', '→'],
+    ['03', 'ACCEPT THE INCOMING TRANSFER', 'Open Offers in OneSwap after the sender submits the transfer. Accept it to add the incoming asset to your spendable balance, or enable auto-accept for future transfers.', '↓'],
+    ['04', 'SWAP INTO CC', 'Choose a funded route into CC, review the live quote, price impact, pool fee, and minimum received after slippage, then confirm the swap.', '↗'],
+    ['05', 'CHECK YOUR BALANCE', 'After Canton settles the transaction, CC appears in your OneSwap wallet. There is no bridge wait or claim step after a completed swap.', '✓'],
+  ]
+
+  return (
+    <section id="bridge" className="content-section bridge-section" aria-labelledby="bridge-title">
+      <div className="section-inner">
+        <Reveal className="section-kicker">05 / GET ASSETS ONTO CANTON</Reveal>
+        <div className="bridge-heading"><Reveal><h2 id="bridge-title">BRIDGE<br /><span>TO CANTON.</span></h2></Reveal><Reveal className="bridge-callout">READ THE LIVE<br /><strong>ROUTE FIRST.</strong></Reveal></div>
+        <Reveal className="bridge-note">OneSwap’s verified flow is a funded Canton wallet and swap route — not a universal bridge for every chain or token.</Reveal>
+        <div className="bridge-steps">{steps.map(([number, title, copy, arrow], index) => <Reveal key={number} className={`bridge-step bridge-step-${index + 1}`}><span className="step-number">{number}</span><div><h3>{title}</h3><p>{copy}</p></div><span className="step-arrow" aria-hidden="true">{arrow}</span></Reveal>)}</div>
+        <a className="external-guide" href="https://www.oneswap.cc/buy/cc" target="_blank" rel="noreferrer">OPEN ONESWAP&apos;S CC GUIDE <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  )
+}
+
+function BuyQuadSection() {
+  return (
+    <section id="buy-quad" className="content-section buy-quad-section" aria-labelledby="buy-quad-title">
+      <div className="section-inner">
+        <Reveal className="section-kicker">06 / THE NEXT MOVE</Reveal>
+        <div className="buy-quad-heading"><Reveal><h2 id="buy-quad-title">HOW TO<br /><span>BUY $QUAD.</span></h2></Reveal><Reveal className="coming-stamp">COMING<br /><strong>SOON</strong></Reveal></div>
+        <div className="buy-quad-grid"><Reveal className="coming-panel"><span className="panel-number">06</span><p className="panel-label">PURCHASE ROUTE</p><h3>NOT LIVE<br />YET.</h3><p>There is no verified QUAD token identifier or purchase route available in this project yet. We&apos;re not going to invent one.</p></Reveal><Reveal className="buy-quad-copy"><p>Bridging or swapping an asset into Canton does not automatically buy QUAD.</p><p>When a real route exists, this section can hold the verified Token Identifier, the supported steps, and a genuine external link.</p><span className="status-line"><i /> WAIT FOR THE VERIFIED ROUTE</span></Reveal></div>
+      </div>
+    </section>
   )
 }
 
