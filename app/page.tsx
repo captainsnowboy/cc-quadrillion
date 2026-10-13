@@ -86,7 +86,36 @@ function ContentSections() {
           </div>
         </div>
       </section>
+      <section id="whats-canton" className="content-section canton-section" aria-labelledby="canton-title">
+        <div className="section-inner canton-inner">
+          <Reveal className="section-kicker">03 / WHAT&apos;S CANTON?</Reveal>
+          <div className="canton-heading"><Reveal><h2 id="canton-title">WHAT&apos;S<br /><span>CANTON?</span></h2></Reveal><Reveal className="canton-stamp">ONCHAIN<br /><small>THE NETWORK</small></Reveal></div>
+          <div className="canton-grid">
+            <Reveal className="canton-feature"><p className="card-label">THE SIMPLE VERSION</p><h3>A NETWORK<br />BUILT FOR<br /><em>WHAT&apos;S NEXT.</em></h3></Reveal>
+            <Reveal className="canton-copy"><p>Canton is building toward a future where massive financial markets can move and settle onchain.</p><p>It&apos;s the infrastructure underneath the conversation about quadrillions — a network designed for real-world financial activity.</p></Reveal>
+            <Reveal className="canton-detail"><span className="detail-number">03</span><p>BIG MARKETS.<br />ONE SHARED<br />LEDGER.</p></Reveal>
+          </div>
+        </div>
+      </section>
+      <BillSection />
     </div>
+  )
+}
+
+function BillSection() {
+  const [flipped, setFlipped] = useState(false)
+
+  return (
+    <section id="quadrillion-bill" className="bill-section content-section" aria-labelledby="bill-title">
+      <div className="section-inner bill-inner">
+        <Reveal className="section-kicker">04 / THE QUADRILLION BILL</Reveal>
+        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLION BILL.</span></h2></Reveal><Reveal className="bill-note">NOVELTY /<br />NOT LEGAL TENDER</Reveal></div>
+        <div className="bill-layout">
+          <Reveal className="bill-copy"><p className="bill-intro">If you&apos;re seeing this, you deserve your own Quadrillion bill.</p><p className="bill-support">A little piece of the big number. Tap the bill to turn it over.</p><button className="print-button" type="button" onClick={() => { const link = document.createElement('a'); link.href = '/quadrillion-banknote.jpeg'; link.download = 'quadrillion-banknote.jpeg'; link.click() }}>PRINT YOUR BILL <span aria-hidden="true">↗</span></button></Reveal>
+          <Reveal className={`bill-stage ${flipped ? 'is-flipped' : ''}`}><button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillion bill to its front view' : 'Flip the Quadrillion bill'} onClick={() => setFlipped((value) => !value)}><span className="bill-card"><Image src="/quadrillion-banknote.jpeg" alt="Quadrillion novelty banknote" width={1200} height={550} priority /><span className="bill-back">SINGLE-SIDED<br /><strong>QUADRILLION</strong><small>FLIP VIEW</small></span></span></button><span className="flip-hint">CLICK TO FLIP</span></Reveal>
+        </div>
+      </div>
+    </section>
   )
 }
 

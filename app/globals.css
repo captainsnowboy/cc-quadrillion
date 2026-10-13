@@ -147,6 +147,47 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .why-quote strong { display: block; color: var(--coral); font-size: clamp(24px, 3.5vw, 40px); margin-top: 12px; }
 .why-quote span { display: block; color: var(--coral); font-size: 24px; margin-top: 8px; }
 
+.canton-section { background: #d66a52; color: var(--ivory); }
+.canton-section .section-kicker { color: rgba(238,236,223,.78); }
+.canton-heading, .bill-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: clamp(40px, 6vw, 80px); }
+.canton-heading h2, .bill-heading h2 { margin: 0; font-size: clamp(54px, 8vw, 116px); line-height: .82; letter-spacing: -.07em; font-weight: 800; }
+.canton-heading h2 span, .bill-heading h2 span { color: var(--ink); }
+.canton-stamp { border: 1px solid rgba(238,236,223,.65); border-radius: 50%; padding: 26px 20px; color: var(--ivory); font-size: 14px; font-weight: 800; line-height: 1; text-align: center; transform: rotate(8deg); }
+.canton-stamp small { display: block; margin-top: 8px; font-size: 8px; letter-spacing: .12em; }
+.canton-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+.canton-feature { grid-row: span 2; padding: clamp(28px, 4vw, 56px); background: var(--ink); color: var(--ivory); min-height: 360px; display: flex; flex-direction: column; justify-content: space-between; }
+.canton-feature h3 { margin: 0; font-size: clamp(36px, 5vw, 76px); line-height: .86; letter-spacing: -.06em; }
+.canton-feature em { color: var(--coral); font-style: normal; }
+.canton-feature .card-label { color: var(--gold); }
+.canton-copy { padding: clamp(24px, 3vw, 44px); border: 1px solid rgba(238,236,223,.7); font-size: clamp(16px, 2vw, 22px); line-height: 1.45; }
+.canton-copy p { margin: 0 0 22px; }
+.canton-copy p:last-child { margin-bottom: 0; color: var(--ink); font-weight: 700; }
+.canton-detail { background: var(--gold); color: var(--ink); padding: 24px 28px; display: flex; align-items: center; gap: 24px; }
+.detail-number { font-size: 64px; line-height: .8; font-weight: 900; }
+.canton-detail p { margin: 0; font-size: 13px; line-height: 1.1; font-weight: 800; letter-spacing: .12em; }
+
+.bill-section { background: #f1e8d0; color: var(--ink); overflow: hidden; }
+.bill-section .section-kicker { color: var(--coral); }
+.bill-heading h2 span { color: var(--coral); }
+.bill-note { color: var(--ink-soft); font-size: 10px; font-weight: 800; letter-spacing: .16em; line-height: 1.4; text-align: right; }
+.bill-layout { display: grid; grid-template-columns: minmax(220px, .45fr) minmax(0, 1.55fr); gap: clamp(28px, 6vw, 90px); align-items: center; }
+.bill-copy { max-width: 300px; }
+.bill-intro { margin: 0 0 18px; font-size: clamp(22px, 2.4vw, 34px); font-weight: 800; line-height: 1.02; letter-spacing: -.045em; }
+.bill-support { margin: 0 0 28px; color: var(--ink-soft); font-size: 14px; line-height: 1.45; }
+.print-button { border: 0; background: var(--ink); color: var(--ivory); padding: 12px 16px; cursor: pointer; font-size: 10px; font-weight: 800; letter-spacing: .12em; transition: transform 180ms ease, background-color 180ms ease; }
+.print-button:hover { background: var(--coral); transform: translateY(-2px); }
+.print-button span { color: var(--coral); margin-left: 10px; }
+.bill-stage { min-width: 0; display: flex; flex-direction: column; align-items: center; perspective: 1400px; }
+.bill-flip { width: 100%; border: 0; padding: 0; background: transparent; cursor: pointer; perspective: 1400px; }
+.bill-card { position: relative; display: block; width: 100%; transform-style: preserve-3d; transition: transform 800ms ease-in-out; }
+.bill-stage.is-flipped .bill-card { transform: rotateY(180deg); }
+.bill-card img, .bill-back { display: block; width: 100%; height: auto; backface-visibility: hidden; }
+.bill-card img { filter: drop-shadow(0 24px 20px rgba(11,41,38,.22)); }
+.bill-back { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; background: var(--ink); color: var(--ivory); border: 8px solid var(--gold); transform: rotateY(180deg); font-size: clamp(20px, 4vw, 54px); font-weight: 900; line-height: .9; letter-spacing: -.05em; }
+.bill-back strong { color: var(--coral); }
+.bill-back small { margin-top: 18px; color: var(--gold); font-size: 9px; letter-spacing: .2em; }
+.flip-hint { margin-top: 14px; color: var(--ink-soft); font-size: 9px; font-weight: 800; letter-spacing: .18em; }
+
 @media (max-width: 700px) {
   .content-section { padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 24px); }
   
@@ -164,6 +205,12 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .why-grid { grid-template-columns: 1fr; }
   .why-panel { grid-column: auto; }
   .why-quote { grid-column: auto; }
+  .canton-heading, .bill-heading { flex-direction: column; gap: 20px; }
+  .canton-stamp, .bill-note { align-self: flex-start; text-align: left; }
+  .canton-grid, .bill-layout { grid-template-columns: 1fr; }
+  .canton-feature { min-height: 300px; }
+  .bill-copy { max-width: none; }
+  .bill-stage { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
