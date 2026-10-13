@@ -10,6 +10,7 @@ const navItems = [
   { label: 'Receipts', href: '#receipts' },
   { label: 'Bridge to Canton', href: '#bridge' },
   { label: 'How to Buy $QUAD', href: '#buy-quad' },
+  { label: 'Join Quadrillion', href: '#join-quadrillion' },
 ]
 
 function Header() {
@@ -101,6 +102,10 @@ function ContentSections() {
       <BillSection />
       <BridgeSection />
       <BuyQuadSection />
+      <ReceiptsSection />
+      <MemesSection />
+      <JoinSection />
+      <SiteFooter />
     </div>
   )
 }
@@ -137,6 +142,57 @@ function BuyQuadSection() {
       </div>
     </section>
   )
+}
+
+function ReceiptsSection() {
+  return (
+    <section id="receipts" className="content-section receipts-section" aria-labelledby="receipts-title">
+      <div className="section-inner">
+        <Reveal className="section-kicker">07 / THE RECEIPTS</Reveal>
+        <div className="receipts-heading"><Reveal><h2 id="receipts-title">THE<br /><span>RECEIPTS.</span></h2></Reveal><Reveal className="receipt-seal">10¹⁵<br /><small>DOCUMENTED</small></Reveal></div>
+        <div className="receipts-grid"><Reveal className="receipt-lead"><p>They kept talking about quadrillions.</p><strong>We kept the receipts.</strong></Reveal><Reveal className="receipt-card"><span className="receipt-index">A / 01</span><p>Canton&apos;s own language around settlement scale is the spark behind QUAD.</p><span className="receipt-mark">↗</span></Reveal><Reveal className="receipt-card receipt-card-offset"><span className="receipt-index">B / 02</span><p>QUAD is an independent community-driven meme, not an official Canton product.</p><span className="receipt-mark">↗</span></Reveal></div>
+      </div>
+    </section>
+  )
+}
+
+function MemesSection() {
+  const [selected, setSelected] = useState<string | null>(null)
+  const images = [
+    { src: '/quadrillion-banknote.jpeg', alt: 'Quadrillion novelty banknote', className: 'meme-tall' },
+    { src: '/quad-logo.png', alt: 'QUAD logo', className: 'meme-logo' },
+    { src: '/quadrillion-banknote.jpeg', alt: 'Quadrillion banknote detail', className: 'meme-wide' },
+  ]
+
+  return (
+    <section id="memes" className="content-section memes-section" aria-labelledby="memes-title">
+      <div className="section-inner">
+        <Reveal className="section-kicker">08 / COMMUNITY WALL</Reveal>
+        <div className="memes-heading"><Reveal><h2 id="memes-title">MEMES<br /><span>ONLY.</span></h2></Reveal><Reveal className="meme-caption">THE INTERNET<br />UNDERSTANDS.</Reveal></div>
+        <div className="meme-wall">{images.map((image, index) => <Reveal key={`${image.src}-${index}`} className={`meme-tile ${image.className}`}><button type="button" aria-label={`Open ${image.alt}`} onClick={() => setSelected(image.src)}><Image src={image.src} alt={image.alt} width={1200} height={550} /></button></Reveal>)}</div>
+        <p className="meme-empty-note">Original meme drops will live here as the community makes them.</p>
+      </div>
+      {selected ? <div className="meme-lightbox" role="dialog" aria-modal="true" aria-label="Expanded meme" onClick={() => setSelected(null)}><button type="button" className="lightbox-close" aria-label="Close expanded meme" onClick={() => setSelected(null)}>CLOSE ×</button><Image src={selected} alt="Expanded QUAD meme" width={1200} height={550} onClick={(event) => event.stopPropagation()} /></div> : null}
+    </section>
+  )
+}
+
+function JoinSection() {
+  return (
+    <section id="join-quadrillion" className="content-section join-section" aria-labelledby="join-title">
+      <div className="section-inner join-inner">
+        <Reveal className="section-kicker">09 / THE COMMUNITY</Reveal>
+        <Reveal className="join-heading"><h2 id="join-title">JOIN<br /><span>QUADRILLION.</span></h2></Reveal>
+        <Reveal className="join-copy"><p>The big number is only the beginning. Bring the meme, the receipts, and whatever comes next.</p></Reveal>
+        <div className="join-links"><Reveal className="join-link join-link-primary"><span>QUAD COMMUNITY</span><strong>DESTINATION PENDING</strong><small>Only verified QUAD channels appear here.</small></Reveal><Reveal className="join-link join-link-secondary"><span>X / TELEGRAM / DISCORD</span><strong>NOT CONNECTED</strong><small>We won&apos;t invent a community link.</small></Reveal></div>
+        <Image className="join-logo" src="/quad-logo.png" alt="QUAD logo" width={160} height={160} />
+      </div>
+    </section>
+  )
+}
+
+function SiteFooter() {
+  return <footer className="site-footer"><div><a className="footer-brand" href="#top"><Image src="/quad-logo.png" alt="QUAD logo" width={36} height={36} /><span>$QUAD</span></a><p>QUAD is an independent community-driven meme. Not affiliated with, endorsed by, or sponsored by Canton Network or Digital Asset.</p></div><nav aria-label="Footer navigation">{navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}<a href="#join-quadrillion">Join Quadrillion</a></nav><p className="footer-risk">QUAD is a meme with no intrinsic value.</p></footer>
 }
 
 function BillSection() {
