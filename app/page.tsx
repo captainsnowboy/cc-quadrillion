@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 
 const navItems = [
   { label: 'Why QUAD', href: '#why-quad' },
@@ -40,6 +41,55 @@ function Header() {
   )
 }
 
+function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true)
+        observer.disconnect()
+      }
+    }, { threshold: 0.12 })
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
+  return <div ref={ref} className={`reveal ${visible ? 'is-visible' : ''} ${className}`}>{children}</div>
+}
+
+function ContentSections() {
+  return (
+    <div className="content-sections">
+      <section id="what-is-this" className="content-section what-section" aria-labelledby="what-title">
+        <div className="section-inner">
+          <Reveal className="section-kicker">01 / THE BIG NUMBER</Reveal>
+          <Reveal className="what-heading-wrap"><h2 id="what-title">WHAT IS<br /><span>QUADRILLION?</span></h2><div className="sticker">10¹⁵<br /><small>THAT&apos;S A LOT</small></div></Reveal>
+          <div className="what-grid">
+            <Reveal className="feature-card"><p className="card-label">THE SHORT VERSION</p><h3>QUAD IS A<br />COMMUNITY-DRIVEN<br /><em>MEME.</em></h3><p>QUADRILLION is a community-driven meme on Canton.</p></Reveal>
+            <Reveal className="what-copy"><p>Canton is building toward a future where massive financial markets can move and settle onchain.</p><p className="pull-quote">They were talking about the market.<br /><strong>We were talking about the ticker.</strong></p></Reveal>
+            <Reveal className="mini-card"><span className="mini-mark">Q</span><p>BUILT FOR WHAT&apos;S NEXT.</p></Reveal>
+          </div>
+        </div>
+      </section>
+      <section id="why-quad" className="content-section why-section" aria-labelledby="why-title">
+        <div className="section-inner">
+          <Reveal className="section-kicker">02 / WHY $QUAD</Reveal>
+          <div className="why-header"><Reveal><h2 id="why-title">WHY<br /><span>QUAD?</span></h2></Reveal><Reveal className="number-lockup"><span>10</span><sup>15</sup></Reveal></div>
+          <div className="why-grid">
+            <Reveal className="why-lead"><p>Canton&apos;s goal is to bring traditional finance onchain. Traditional financial markets already settle enormous amounts of value every year, measured in quadrillions.</p></Reveal>
+            <Reveal className="why-panel"><p className="card-label">THE INSPIRATION</p><p>Canton repeatedly talks about that scale across interviews, discussions, programming, and promotional material. This is the inspiration behind the meme.</p></Reveal>
+            <Reveal className="why-quote"><p>They kept talking about quadrillions.</p><strong>We made it a ticker</strong><span aria-hidden="true">↗</span></Reveal>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
 function FloatingNote() {
   return (
     <div className="artwork" aria-label="QUADRILLION novelty banknote">
@@ -68,7 +118,7 @@ export default function Page() {
         </div>
         <FloatingNote />
       </section>
-      <div id="what-is-this" className="anchor-target" aria-hidden="true" />
+      <ContentSections />
     </main>
   )
 }
