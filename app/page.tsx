@@ -76,13 +76,12 @@ function ContentSections() {
         </div>
       </section>
       <section id="why-quad" className="content-section why-section" aria-labelledby="why-title">
-        <div className="section-inner">
-          <Reveal className="section-kicker">02 / WHY $QUAD</Reveal>
-          <div className="why-header"><Reveal><h2 id="why-title">WHY<br /><span>QUAD?</span></h2></Reveal><Reveal className="number-lockup"><span>10</span><sup>15</sup></Reveal></div>
-          <div className="why-grid">
-            <Reveal className="why-lead"><p>Canton&apos;s goal is to bring traditional finance onchain. Traditional financial markets already settle enormous amounts of value every year, measured in quadrillions.</p></Reveal>
-            <Reveal className="why-panel"><p className="card-label">THE INSPIRATION</p><p>Canton repeatedly talks about that scale across interviews, discussions, programming, and promotional material. This is the inspiration behind the meme.</p></Reveal>
-            <Reveal className="why-quote"><p>They kept talking about quadrillions.</p><strong>We made it a ticker</strong><span aria-hidden="true">↗</span></Reveal>
+        <div className="section-inner lore-inner">
+          <Reveal className="lore-heading-wrap"><h2 id="why-title">THE LORE</h2></Reveal>
+          <div className="lore-story">
+            <div className="lore-beat"><Reveal><h3>the ticker wasn&apos;t from a random word.</h3></Reveal><Reveal><p>QUADRILLION came from the same conversations the Canton team keeps having, the ones where they talk about the real size of traditional finance. The DTCC alone moves roughly 3.7 to 4.7 quadrillion dollars in transactions every year. Canton was built to bring that scale onchain.</p></Reveal></div>
+            <div className="lore-beat"><Reveal><h3>They kept saying the word.</h3></Reveal><Reveal><p>They kept pointing at the number. So the community took the biggest number they kept repeating and turned it into a coin.</p></Reveal></div>
+            <div className="lore-beat"><Reveal><h3>That&apos;s the whole idea.</h3></Reveal><Reveal><p>A simple piece of the conversation that everyone can hold, trade, and carry while the actual quadrillions slowly start moving on the network. The name isn&apos;t random. It&apos;s a reminder of the size of the opportunity.</p></Reveal></div>
           </div>
         </div>
       </section>
