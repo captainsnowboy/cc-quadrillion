@@ -126,20 +126,25 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 
 .what-redesign-inner { max-width: 920px; }
 .what-redesign-heading { display: flex; justify-content: center; margin: 0 auto clamp(38px, 5vw, 64px); }
-.what-redesign-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(40px, 7.2vw, 94px); font-weight: 400; line-height: .95; letter-spacing: .005em; text-align: center; white-space: nowrap; }
+.what-redesign-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(40px, 7.2vw, 94px); font-weight: 400; line-height: .95; letter-spacing: .005em; text-align: center; white-space: nowrap; transform: rotate(-1.35deg); }
 .what-redesign-cards { display: flex; flex-direction: column; align-items: center; gap: clamp(30px, 3.5vw, 42px); }
-.what-redesign-card { position: relative; isolation: isolate; width: min(100%, 760px); padding: clamp(32px, 4.5vw, 58px) clamp(28px, 5.5vw, 72px); border: 6px solid var(--ink);   border-radius: 26px 22px 25px 20px; background: #f9e39b; color: var(--ink); box-shadow: 12px 16px 0 var(--ink); transform: translateY(0); }
+.what-redesign-card { position: relative; isolation: isolate; width: min(100%, 760px); padding: clamp(32px, 4.5vw, 58px) clamp(28px, 5.5vw, 72px); border: 6px solid var(--ink);   border-radius: 26px 22px 25px 20px; background: #f9e39b; color: var(--ink); box-shadow: 12px 16px 0 var(--ink); transform: translateY(0) rotate(-1.2deg); }
+.what-redesign-card-two { transform: translateY(0) rotate(1.15deg); }
+.what-redesign-card:hover { transform: translateY(-5px) rotate(-1.8deg); }
+.what-redesign-card-two:hover { transform: translateY(-5px) rotate(1.8deg); }
 .what-redesign-card::after { content: none; }
-.what-redesign-card p { margin: 0; font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(27px, 3.75vw, 48px); font-weight: 400; line-height: 1.12; letter-spacing: .005em; }
+.what-redesign-card p { margin: 0; font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(27px, 3.75vw, 48px); font-weight: 400; line-height: 1.12; letter-spacing: .005em; transform: rotate(.35deg); }
+.what-redesign-card-two p { transform: rotate(-.3deg); }
 .what-redesign-card-two { width: min(100%, 820px); }
 .what-redesign-card-two p { font-size: clamp(22px, 3.55vw, 43px); }
 .what-redesign-card-two p span { color: var(--coral); }
 .what-redesign-card.is-visible { animation: what-card-pop 620ms cubic-bezier(.16, 1, .3, 1) forwards; }
 .what-redesign-card.is-visible p { animation: what-card-text 520ms 120ms ease-out both; }
-.what-redesign-card-two.is-visible { animation-delay: 360ms; }
+.what-redesign-card-two.is-visible { animation-name: what-card-pop-right; animation-delay: 360ms; }
 .what-redesign-card-two.is-visible p { animation-delay: 480ms; }
 
-@keyframes what-card-pop { from { opacity: 0; transform: translateY(18px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes what-card-pop { from { opacity: 0; transform: translateY(18px) rotate(-1.2deg) scale(.96); } to { opacity: 1; transform: translateY(0) rotate(-1.2deg) scale(1); } }
+@keyframes what-card-pop-right { from { opacity: 0; transform: translateY(18px) rotate(1.15deg) scale(.96); } to { opacity: 1; transform: translateY(0) rotate(1.15deg) scale(1); } }
 @keyframes what-card-text { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 .why-section { background: var(--ink); color: var(--ivory); }
