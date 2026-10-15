@@ -67,13 +67,11 @@ function ContentSections() {
   return (
     <div className="content-sections">
       <section id="what-is-this" className="content-section what-section" aria-labelledby="what-title">
-        <div className="section-inner">
-          <Reveal className="section-kicker">01 / THE BIG NUMBER</Reveal>
-          <Reveal className="what-heading-wrap"><h2 id="what-title">WHAT IS<br /><span>QUADRILLION?</span></h2><div className="sticker">10¹⁵<br /><small>THAT&apos;S A LOT</small></div></Reveal>
-          <div className="what-grid">
-            <Reveal className="feature-card"><p className="card-label">THE SHORT VERSION</p><h3>QUAD IS A<br />COMMUNITY-DRIVEN<br /><em>MEME.</em></h3><p>QUADRILLION is a community-driven meme on Canton.</p></Reveal>
-            <Reveal className="what-copy"><p>Canton is building toward a future where massive financial markets can move and settle onchain.</p><p className="pull-quote">They were talking about the market.<br /><strong>We were talking about the ticker.</strong></p></Reveal>
-            <Reveal className="mini-card"><span className="mini-mark">Q</span><p>BUILT FOR WHAT&apos;S NEXT.</p></Reveal>
+        <div className="section-inner what-redesign-inner">
+          <Reveal className="what-redesign-heading"><h2 id="what-title">WTF IS QUADRILLION?</h2></Reveal>
+          <div className="what-redesign-cards">
+            <Reveal className="what-redesign-card"><p>QUADRILLION is the first community driven meme on Canton</p></Reveal>
+            <Reveal className="what-redesign-card what-redesign-card-two"><p>Canton is the only public blockchain with privacy that works, powering Wall Street and trillions onchain (soon <span>Quadrillion</span>).</p></Reveal>
           </div>
         </div>
       </section>

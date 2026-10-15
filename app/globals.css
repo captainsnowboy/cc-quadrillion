@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -122,6 +123,24 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .mini-card { grid-column: 1; padding: 20px 24px; background: var(--ink-soft); color: var(--ivory); border-radius: 8px; display: flex; align-items: center; gap: 16px; }
 .mini-mark { font-size: 28px; font-weight: 900; }
 .mini-card p { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+.what-redesign-inner { max-width: 920px; }
+.what-redesign-heading { display: flex; justify-content: center; margin: 0 auto clamp(38px, 5vw, 64px); }
+.what-redesign-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(40px, 7.2vw, 94px); font-weight: 400; line-height: .95; letter-spacing: .005em; text-align: center; white-space: nowrap; }
+.what-redesign-cards { display: flex; flex-direction: column; align-items: center; gap: clamp(30px, 3.5vw, 42px); }
+.what-redesign-card { position: relative; isolation: isolate; width: min(100%, 760px); padding: clamp(32px, 4.5vw, 58px) clamp(28px, 5.5vw, 72px); border: 6px solid var(--ink);   border-radius: 26px 22px 25px 20px; background: #f9e39b; color: var(--ink); box-shadow: 12px 16px 0 var(--ink); transform: translateY(0); }
+.what-redesign-card::after { content: none; }
+.what-redesign-card p { margin: 0; font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(27px, 3.75vw, 48px); font-weight: 400; line-height: 1.12; letter-spacing: .005em; }
+.what-redesign-card-two { width: min(100%, 820px); }
+.what-redesign-card-two p { font-size: clamp(22px, 3.55vw, 43px); }
+.what-redesign-card-two p span { color: var(--coral); }
+.what-redesign-card.is-visible { animation: what-card-pop 620ms cubic-bezier(.16, 1, .3, 1) forwards; }
+.what-redesign-card.is-visible p { animation: what-card-text 520ms 120ms ease-out both; }
+.what-redesign-card-two.is-visible { animation-delay: 360ms; }
+.what-redesign-card-two.is-visible p { animation-delay: 480ms; }
+
+@keyframes what-card-pop { from { opacity: 0; transform: translateY(18px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes what-card-text { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 .why-section { background: var(--ink); color: var(--ivory); }
 .why-section .section-kicker { color: rgba(238, 236, 223, .6); }
@@ -289,6 +308,13 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 
 @media (max-width: 700px) {
   .content-section { padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 24px); }
+  
+  .what-redesign-inner { max-width: 100%; }
+  .what-redesign-heading { margin-bottom: 34px; }
+  .what-redesign-heading h2 { font-size: clamp(24px, 8.15vw, 42px); letter-spacing: 0; }
+  .what-redesign-card { width: calc(100% - 18px); padding: 30px 24px; border-width: 5px; border-radius: 22px 18px 21px 17px; }
+  .what-redesign-card::after { inset: 10px -14px -15px 10px; border-radius: 22px 18px 21px 17px; }
+  .what-redesign-card p, .what-redesign-card-two p { font-size: clamp(25px, 7vw, 34px); line-height: 1.1; letter-spacing: 0; }
   
   .what-heading-wrap { flex-direction: column; align-items: stretch; }
   .sticker { align-self: flex-start; margin-top: 8px; }
