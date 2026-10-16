@@ -9,7 +9,6 @@ const navItems = [
   { label: 'Memes', href: '#memes' },
   { label: 'Receipts', href: '#receipts' },
   { label: 'Bridge to Canton', href: '#bridge' },
-  { label: 'How to Buy $QUAD', href: '#buy-quad' },
   { label: 'Join Quadrillion', href: '#join-quadrillion' },
 ]
 
@@ -85,20 +84,8 @@ function ContentSections() {
           </div>
         </div>
       </section>
-      <section id="whats-canton" className="content-section canton-section" aria-labelledby="canton-title">
-        <div className="section-inner canton-inner">
-          <Reveal className="section-kicker">03 / WHAT&apos;S CANTON?</Reveal>
-          <div className="canton-heading"><Reveal><h2 id="canton-title">WHAT&apos;S<br /><span>CANTON?</span></h2></Reveal><Reveal className="canton-stamp">ONCHAIN<br /><small>THE NETWORK</small></Reveal></div>
-          <div className="canton-grid">
-            <Reveal className="canton-feature"><p className="card-label">THE SIMPLE VERSION</p><h3>A NETWORK<br />BUILT FOR<br /><em>WHAT&apos;S NEXT.</em></h3></Reveal>
-            <Reveal className="canton-copy"><p>Canton is building toward a future where massive financial markets can move and settle onchain.</p><p>It&apos;s the infrastructure underneath the conversation about quadrillions — a network designed for real-world financial activity.</p></Reveal>
-            <Reveal className="canton-detail"><span className="detail-number">03</span><p>BIG MARKETS.<br />ONE SHARED<br />LEDGER.</p></Reveal>
-          </div>
-        </div>
-      </section>
       <BillSection />
       <BridgeSection />
-      <BuyQuadSection />
       <ReceiptsSection />
       <MemesSection />
       <JoinSection />
@@ -109,33 +96,21 @@ function ContentSections() {
 
 function BridgeSection() {
   const steps = [
-    ['01', 'CREATE YOUR ONESWAP ACCOUNT', 'Sign up with your email and password, then finish verification. OneSwap creates the platform wallet used by the trading app.', '↗'],
-    ['02', 'FUND THE PLATFORM WALLET', 'Use a live CC route’s exact input asset. Copy your Canton party ID or receive QR from OneSwap, then send that asset from its issuer, an exchange, or another Canton wallet.', '→'],
-    ['03', 'ACCEPT THE INCOMING TRANSFER', 'Open Offers in OneSwap after the sender submits the transfer. Accept it to add the incoming asset to your spendable balance, or enable auto-accept for future transfers.', '↓'],
-    ['04', 'SWAP INTO CC', 'Choose a funded route into CC, review the live quote, price impact, pool fee, and minimum received after slippage, then confirm the swap.', '↗'],
-    ['05', 'CHECK YOUR BALANCE', 'After Canton settles the transaction, CC appears in your OneSwap wallet. There is no bridge wait or claim step after a completed swap.', '✓'],
+    ['01', 'GET A WALLET', 'Go to oneswap.cc, sign up and create a wallet'],
+    ['02', 'CONNECT EVM', 'Go to "bridge" and connect your evm wallet'],
+    ['03', 'BRIDGE ASSETS', 'Bridge your assets from EVM chains to CC on the Canton network'],
+    ['04', '', ''],
   ]
 
   return (
     <section id="bridge" className="content-section bridge-section" aria-labelledby="bridge-title">
-      <div className="section-inner">
-        <Reveal className="section-kicker">05 / GET ASSETS ONTO CANTON</Reveal>
-        <div className="bridge-heading"><Reveal><h2 id="bridge-title">BRIDGE<br /><span>TO CANTON.</span></h2></Reveal><Reveal className="bridge-callout">READ THE LIVE<br /><strong>ROUTE FIRST.</strong></Reveal></div>
-        <Reveal className="bridge-note">OneSwap’s verified flow is a funded Canton wallet and swap route — not a universal bridge for every chain or token.</Reveal>
-        <div className="bridge-steps">{steps.map(([number, title, copy, arrow], index) => <Reveal key={number} className={`bridge-step bridge-step-${index + 1}`}><span className="step-number">{number}</span><div><h3>{title}</h3><p>{copy}</p></div><span className="step-arrow" aria-hidden="true">{arrow}</span></Reveal>)}</div>
-        <a className="external-guide" href="https://www.oneswap.cc/buy/cc" target="_blank" rel="noreferrer">OPEN ONESWAP&apos;S CC GUIDE <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-  )
-}
-
-function BuyQuadSection() {
-  return (
-    <section id="buy-quad" className="content-section buy-quad-section" aria-labelledby="buy-quad-title">
-      <div className="section-inner">
-        <Reveal className="section-kicker">06 / THE NEXT MOVE</Reveal>
-        <div className="buy-quad-heading"><Reveal><h2 id="buy-quad-title">HOW TO<br /><span>BUY $QUAD.</span></h2></Reveal><Reveal className="coming-stamp">COMING<br /><strong>SOON</strong></Reveal></div>
-        <div className="buy-quad-grid"><Reveal className="coming-panel"><span className="panel-number">06</span><p className="panel-label">PURCHASE ROUTE</p><h3>NOT LIVE<br />YET.</h3><p>There is no verified QUAD token identifier or purchase route available in this project yet. We&apos;re not going to invent one.</p></Reveal><Reveal className="buy-quad-copy"><p>Bridging or swapping an asset into Canton does not automatically buy QUAD.</p><p>When a real route exists, this section can hold the verified Token Identifier, the supported steps, and a genuine external link.</p><span className="status-line"><i /> WAIT FOR THE VERIFIED ROUTE</span></Reveal></div>
+      <div className="section-inner bridge-inner">
+        <Reveal className="bridge-heading"><h2 id="bridge-title">BRIDGE TO CANTON</h2></Reveal>
+        <div className="bridge-content-wrap">
+          <div className="bridge-steps">{steps.map(([number, title, copy]) => <Reveal key={number} className="bridge-step"><span className="step-number">{number}</span>{title ? <div><h3>{title}</h3><p>{copy}</p></div> : null}</Reveal>)}</div>
+          <Reveal className="bridge-buy-wrap"><button className="bridge-buy-button" type="button">Buy $QUAD</button></Reveal>
+          <div className="bridge-coming-soon" aria-hidden="true">COMING SOON</div>
+        </div>
       </div>
     </section>
   )
@@ -198,12 +173,17 @@ function BillSection() {
   return (
     <section id="quadrillion-bill" className="bill-section content-section" aria-labelledby="bill-title">
       <div className="section-inner bill-inner">
-        <Reveal className="section-kicker">04 / THE QUADRILLION BILL</Reveal>
-        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLION BILL.</span></h2></Reveal><Reveal className="bill-note">NOVELTY /<br />NOT LEGAL TENDER</Reveal></div>
-        <div className="bill-layout">
-          <Reveal className="bill-copy"><p className="bill-intro">If you&apos;re seeing this, you deserve your own Quadrillion bill.</p><p className="bill-support">A little piece of the big number. Tap the bill to turn it over.</p><button className="print-button" type="button" onClick={() => { const link = document.createElement('a'); link.href = '/quadrillion-banknote.jpeg'; link.download = 'quadrillion-banknote.jpeg'; link.click() }}>PRINT YOUR BILL <span aria-hidden="true">↗</span></button></Reveal>
-          <Reveal className={`bill-stage ${flipped ? 'is-flipped' : ''}`}><button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillion bill to its front view' : 'Flip the Quadrillion bill'} onClick={() => setFlipped((value) => !value)}><span className="bill-card"><Image src="/quadrillion-banknote.jpeg" alt="Quadrillion novelty banknote" width={1200} height={550} priority /><span className="bill-back">SINGLE-SIDED<br /><strong>QUADRILLION</strong><small>FLIP VIEW</small></span></span></button><span className="flip-hint">CLICK TO FLIP</span></Reveal>
-        </div>
+        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLION BILL.</span></h2></Reveal></div>
+        <Reveal className="bill-copy"><p className="bill-intro">if you&apos;re seeing this you deserve your own Quadrillion bill</p></Reveal>
+        <Reveal className={`bill-stage ${flipped ? 'is-flipped' : ''}`}>
+          <button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillion bill to its front view' : 'Flip the Quadrillion bill'} onClick={() => setFlipped((value) => !value)}>
+            <span className="bill-card">
+              <Image src="/quadrillion-banknote.jpeg" alt="Quadrillion novelty banknote" width={1200} height={550} priority />
+              <span className="bill-back"><Image src="/quadrillion-banknote.jpeg" alt="" width={1200} height={550} /></span>
+            </span>
+          </button>
+        </Reveal>
+        <Reveal className="bill-print-wrap"><button className="print-button" type="button" onClick={() => { const link = document.createElement('a'); link.href = '/quadrillion-banknote.jpeg'; link.download = 'quadrillion-bill.jpeg'; link.click() }}>PRINT YOUR BILL</button></Reveal>
       </div>
     </section>
   )
