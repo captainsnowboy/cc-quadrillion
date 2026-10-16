@@ -34,8 +34,8 @@ button { font: inherit; }
 .mobile-menu { display: none; }
 .ticker { position: relative; z-index: 10; overflow: hidden; width: 100%; background: var(--ink); color: var(--ivory); border-bottom: 1px solid var(--gold); }
 .ticker::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 24px, rgba(233,229,215,.08) 24px 25px); pointer-events: none; }
-.ticker-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
-.ticker-track span { display: block; padding: 10px 0 9px; padding-right: 5.5rem; white-space: nowrap; font-size: 10px; letter-spacing: .19em; font-weight: 700; word-spacing: .65rem; }
+.ticker-track { display: flex; width: max-content; animation: marquee 28s linear infinite; will-change: transform; }
+.ticker-track span { flex: 0 0 auto; display: block; padding: 10px 5.5rem 9px 0; white-space: nowrap; font-size: 10px; letter-spacing: .19em; font-weight: 700; word-spacing: .65rem; }
 .ticker-track b { color: var(--coral); font-size: 8px; margin: 0 1.2rem; }
 .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr); align-items: center; gap: clamp(20px, 4vw, 76px); width: 100%; max-width: 1440px; min-height: calc(100vh - 119px); padding: clamp(48px, 7vw, 112px) clamp(20px, 5vw, 72px) 80px; margin: 0 auto; }
 .hero-copy { position: relative; z-index: 5; max-width: 700px; animation: rise-in 800ms ease-in-out both; }
@@ -46,9 +46,10 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .hero-description { max-width: 330px; margin: clamp(30px, 4vw, 48px) 0 0; color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: clamp(18px, 1.55vw, 22px); line-height: 1.32; letter-spacing: -.025em; animation: rise-in 700ms 180ms ease-in-out both; }
 .hero-description strong { color: var(--coral); font-weight: 700; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; animation: rise-in 700ms 280ms ease-in-out both; }
-.buy-button { border: 0; border-radius: 999px; padding: 15px 23px; background: var(--ink); color: var(--ivory); cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: .12em; transition: transform 180ms ease, background 180ms ease; }
-.buy-button:hover { transform: translateY(-2px); background: var(--coral); }
-.buy-button:active { transform: translateY(0); }
+.buy-button { border: 0; border-radius: 999px; padding: 15px 23px; background: var(--ink); color: var(--ivory); cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: .12em; box-shadow: 6px 7px 0 #071c1a; transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.buy-button:hover { transform: translate(-2px, -2px); background: var(--coral); box-shadow: 8px 9px 0 #071c1a; }
+.buy-button:active { transform: translate(4px, 5px); box-shadow: 2px 2px 0 #071c1a; }
+.buy-button:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
 .buy-button span { margin-left: 12px; font-size: 15px; }
 .scroll-link { color: var(--ink-soft); font-size: 11px; font-weight: 800; letter-spacing: .1em; transition: color 180ms ease; }
 .scroll-link:hover { color: var(--coral); }
@@ -60,7 +61,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .banknote { width: 42%; min-width: 180px; height: auto; object-fit: contain; filter: drop-shadow(0 17px 10px rgba(16,37,35,.16)); animation: note-float 8s ease-in-out infinite; }
 .anchor-target { height: 1px; }
 
-@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes rise-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes drift { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(8px, -12px) scale(1.015); } }
 @keyframes note-float { 0%, 100% { transform: translate3d(-4px, 3px, 0) rotate(-1deg); } 50% { transform: translate3d(6px, -9px, 0) rotate(1.2deg); } }
@@ -267,42 +268,44 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .receipts-disclaimer { max-width: 850px; margin: 30px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.55; }
 
 .memes-section { background: #e4ded0; color: var(--ink); overflow: hidden; }
-.memes-heading h2 span { color: var(--coral); }
-.meme-caption { padding-top: 12px; color: var(--coral); font-size: 11px; font-weight: 800; line-height: 1.1; letter-spacing: .14em; text-align: right; }
-.meme-wall { display: grid; grid-template-columns: 1.25fr .65fr 1fr; grid-template-rows: 180px 150px; gap: 12px; }
-.meme-tile { min-width: 0; overflow: hidden; border: 2px solid var(--ink); background: var(--ivory); }
-.meme-tile button { width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
-.meme-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease-out; }
-.meme-tile:hover img { transform: scale(1.04); }
-.meme-tall { grid-row: 1 / 3; }
-.meme-logo { grid-row: 1 / 3; background: var(--ink); }
-.meme-logo img { object-fit: contain; padding: 30px; }
-.meme-wide { grid-column: 3; grid-row: 1 / 3; }
-.meme-empty-note { margin: 20px 0 0; color: var(--ink-soft); font-size: 12px; letter-spacing: .04em; }
-.meme-lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 8vw; background: rgba(11,41,38,.9); }
-.meme-lightbox img { max-width: min(100%, 980px); max-height: 80vh; width: auto; height: auto; object-fit: contain; box-shadow: 0 24px 60px rgba(0,0,0,.3); }
-.lightbox-close { position: absolute; top: 24px; right: 24px; border: 1px solid var(--ivory); background: transparent; color: var(--ivory); padding: 10px 14px; font-size: 10px; font-weight: 800; letter-spacing: .12em; cursor: pointer; }
+.memes-inner { max-width: 1320px; }
+.memes-heading { display: flex; justify-content: flex-start; margin-bottom: 30px; }
+.memes-heading h2 { margin: 0; color: var(--coral); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(44px, 6vw, 78px); font-weight: 400; line-height: .92; letter-spacing: .01em; text-shadow: 4px 4px 0 var(--ivory); transform: rotate(-2deg); }
+.meme-gallery { position: relative; display: flex; flex-direction: column; gap: 22px; overflow: hidden; padding: 8px 0 16px; }
+.meme-gallery-row { overflow: hidden; width: 100%; }
+.meme-gallery-track { display: flex; width: max-content; gap: 18px; will-change: transform; animation: meme-marquee 42s linear infinite; }
+.meme-gallery-row-reverse .meme-gallery-track { animation-direction: reverse; animation-duration: 48s; }
+.meme-gallery-card { flex: 0 0 clamp(190px, 22vw, 290px); height: clamp(135px, 16vw, 205px); overflow: hidden; border: 4px solid var(--ink); border-radius: 20px; background: var(--ivory); box-shadow: 9px 10px 0 var(--ink); transform: rotate(-1.2deg); }
+.meme-gallery-card:nth-child(2n) { transform: rotate(1.3deg); }
+.meme-gallery-card:nth-child(3n) { transform: rotate(-.6deg); background: var(--gold); }
+.meme-gallery-card img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.meme-gallery-card.is-empty { display: grid; place-items: center; }
+.empty-card-label { color: rgba(11,41,38,.35); font-size: 10px; font-weight: 900; letter-spacing: .14em; }
+.meme-slogan { align-self: center; z-index: 2; margin: -4px 0; padding: 14px 22px; border: 4px solid var(--ink); border-radius: 12px; background: var(--coral); color: var(--ivory); box-shadow: 7px 8px 0 var(--ink); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(21px, 3.5vw, 44px); line-height: 1; text-align: center; transform: rotate(-1.5deg); }
+.meme-actions { display: flex; justify-content: flex-end; margin-top: 30px; }
+.meme-submit-button { display: inline-flex; align-items: center; gap: 10px; border: 4px solid var(--ink); border-radius: 12px; padding: 12px 16px; background: var(--gold); color: var(--ink); box-shadow: 6px 7px 0 var(--ink); font-size: 11px; font-weight: 900; letter-spacing: .11em; transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; }
+.meme-submit-button:hover { transform: translate(-2px, -2px); background: #f7e28e; box-shadow: 8px 9px 0 var(--ink); }
+.meme-submit-button:active { transform: translate(4px, 5px); box-shadow: 2px 2px 0 var(--ink); }
+.meme-submit-button.is-unconfigured { cursor: not-allowed; opacity: .72; }
+@keyframes meme-marquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
 
 .join-section { background: var(--ink); color: var(--ivory); overflow: hidden; }
-.join-section .section-kicker { color: var(--gold); }
-.join-heading h2 { margin: 0; font-size: clamp(58px, 10vw, 148px); line-height: .78; letter-spacing: -.08em; }
-.join-heading h2 span { color: var(--coral); }
-.join-copy { max-width: 420px; margin: 34px 0; font-size: 19px; line-height: 1.35; }
-.join-links { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; max-width: 850px; }
-.join-link { min-height: 160px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; border: 2px solid var(--coral); }
-.join-link-primary { background: var(--coral); color: var(--ink); }
-.join-link-secondary { border-color: var(--gold); color: var(--gold); transform: translateY(28px) rotate(2deg); }
-.join-link span { font-size: 10px; letter-spacing: .16em; font-weight: 800; }
-.join-link strong { font-size: clamp(20px, 3vw, 34px); letter-spacing: -.04em; }
-.join-link small { font-size: 11px; line-height: 1.3; }
-.join-logo { position: absolute; right: clamp(20px, 8vw, 120px); bottom: clamp(30px, 7vw, 90px); width: clamp(90px, 13vw, 180px); height: auto; opacity: .9; filter: sepia(1) saturate(.6) brightness(1.5); transform: rotate(9deg); }
-.site-footer { display: grid; grid-template-columns: 1.2fr .8fr auto; gap: 32px; padding: 34px clamp(20px, 5vw, 72px); background: #071c1a; color: var(--ivory); }
-.footer-brand { display: inline-flex; align-items: center; gap: 9px; color: var(--ivory); font-weight: 800; letter-spacing: .08em; }
-.footer-brand img { width: 30px; height: 30px; }
-.site-footer p { max-width: 360px; margin: 14px 0 0; color: rgba(238,236,223,.62); font-size: 11px; line-height: 1.45; }
-.site-footer nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; align-content: start; }
-.site-footer nav a { color: var(--ivory); font-size: 10px; letter-spacing: .08em; }
-.site-footer .footer-risk { align-self: end; margin: 0; color: var(--coral); font-size: 10px; font-weight: 800; white-space: nowrap; }
+.join-inner { max-width: 1120px; }
+.join-heading { display: flex; justify-content: flex-start; }
+.join-heading h2 { margin: 0; color: #8bd487; font-family: "Lilita One", Impact, sans-serif; font-size: clamp(48px, 7vw, 88px); font-weight: 400; line-height: .9; letter-spacing: .01em; text-shadow: 4px 4px 0 #071c1a; transform: rotate(-2deg); }
+.join-copy { max-width: 420px; margin: 28px 0 38px; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.35; }
+.join-links { display: flex; align-items: flex-start; gap: 18px; }
+.social-link { display: inline-flex; align-items: center; gap: 12px; border: 4px solid var(--ivory); border-radius: 14px; padding: 16px 20px; color: var(--ink); box-shadow: 7px 8px 0 #071c1a; font-size: 11px; font-weight: 900; letter-spacing: .1em; transition: transform 160ms ease, box-shadow 160ms ease; }
+.social-link span { font-size: 20px; line-height: 1; }
+.social-link-x { background: var(--ivory); }
+.social-link-telegram { background: var(--gold); transform: translateY(26px) rotate(2deg); }
+.social-link:hover { transform: translate(-2px, -2px); box-shadow: 9px 10px 0 #071c1a; }
+.social-link-telegram:hover { transform: translate(-2px, 24px) rotate(2deg); }
+.social-link:active { transform: translate(4px, 5px); box-shadow: 2px 2px 0 #071c1a; }
+.social-link.is-unconfigured { cursor: not-allowed; opacity: .62; }
+.join-risk { max-width: 850px; margin-top: 86px; padding-top: 22px; border-top: 1px solid rgba(238,236,223,.3); }
+.join-risk p { margin: 0; color: rgba(238,236,223,.72); font-size: 11px; line-height: 1.6; }
+.site-footer { padding: 22px clamp(20px, 5vw, 72px); background: #071c1a; color: rgba(238,236,223,.68); font-size: 10px; letter-spacing: .08em; text-align: center; }
 
 @media (max-width: 700px) {
   .content-section { padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 24px); }
@@ -354,21 +357,28 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .receipt-card { flex-basis: min(78vw, 290px); min-height: 235px; }
   .receipt-card a { min-height: 235px; padding: 18px; }
   .receipts-disclaimer { margin-top: 22px; font-size: 10px; }
-  .join-links { grid-template-columns: 1fr; }
-  .meme-wall { grid-template-columns: 1fr 1fr; grid-template-rows: 190px 140px 170px; }
-  .meme-tall { grid-row: 1 / 3; }
-  .meme-logo { grid-row: 3; grid-column: 1; }
-  .meme-wide { grid-column: 2; grid-row: 2 / 4; }
-  .join-link-secondary { transform: none; }
-  .join-logo { position: static; display: block; margin: 56px auto 0; }
-  .site-footer { grid-template-columns: 1fr; gap: 22px; }
-  .site-footer .footer-risk { white-space: normal; }
+  .memes-heading h2 { font-size: clamp(40px, 12vw, 64px); }
+  .meme-gallery { gap: 16px; }
+  .meme-gallery-track { gap: 14px; animation-duration: 34s; }
+  .meme-gallery-row-reverse .meme-gallery-track { animation-duration: 40s; }
+  .meme-gallery-card { flex-basis: min(68vw, 250px); height: 168px; border-width: 3px; border-radius: 16px; box-shadow: 7px 8px 0 var(--ink); }
+  .meme-slogan { max-width: calc(100% - 20px); padding: 12px 14px; font-size: clamp(19px, 6vw, 30px); }
+  .meme-actions { margin-top: 24px; }
+  .join-links { flex-wrap: wrap; gap: 16px; }
+  .social-link { padding: 14px 16px; }
+  .social-link-telegram { transform: translateY(12px) rotate(2deg); }
+  .social-link-telegram:hover { transform: translate(-2px, 10px) rotate(2deg); }
+  .join-risk { margin-top: 58px; }
+  .site-footer { padding-inline: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .ticker-track, .meme-gallery-track { animation: none !important; transform: none !important; }
 }
+
+.buy-button:focus-visible, .meme-submit-button:focus-visible, .social-link:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
 
 @media (hover: none) {
   .feature-card:hover, .why-panel:hover { transform: none; }
