@@ -187,12 +187,17 @@ function BillSection() {
   return (
     <section id="quadrillion-bill" className="bill-section content-section" aria-labelledby="bill-title">
       <div className="section-inner bill-inner">
-        <Reveal className="section-kicker">04 / THE QUADRILLION BILL</Reveal>
-        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLION BILL.</span></h2></Reveal><Reveal className="bill-note">NOVELTY /<br />NOT LEGAL TENDER</Reveal></div>
-        <div className="bill-layout">
-          <Reveal className="bill-copy"><p className="bill-intro">If you&apos;re seeing this, you deserve your own Quadrillion bill.</p><p className="bill-support">A little piece of the big number. Tap the bill to turn it over.</p><button className="print-button" type="button" onClick={() => { const link = document.createElement('a'); link.href = '/quadrillion-banknote.jpeg'; link.download = 'quadrillion-banknote.jpeg'; link.click() }}>PRINT YOUR BILL <span aria-hidden="true">↗</span></button></Reveal>
-          <Reveal className={`bill-stage ${flipped ? 'is-flipped' : ''}`}><button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillion bill to its front view' : 'Flip the Quadrillion bill'} onClick={() => setFlipped((value) => !value)}><span className="bill-card"><Image src="/quadrillion-banknote.jpeg" alt="Quadrillion novelty banknote" width={1200} height={550} priority /><span className="bill-back">SINGLE-SIDED<br /><strong>QUADRILLION</strong><small>FLIP VIEW</small></span></span></button><span className="flip-hint">CLICK TO FLIP</span></Reveal>
-        </div>
+        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLION BILL.</span></h2></Reveal></div>
+        <Reveal className="bill-copy"><p className="bill-intro">if you&apos;re seeing this you deserve your own Quadrillion bill</p></Reveal>
+        <Reveal className={`bill-stage ${flipped ? 'is-flipped' : ''}`}>
+          <button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillion bill to its front view' : 'Flip the Quadrillion bill'} onClick={() => setFlipped((value) => !value)}>
+            <span className="bill-card">
+              <Image src="/quadrillion-banknote.jpeg" alt="Quadrillion novelty banknote" width={1200} height={550} priority />
+              <span className="bill-back"><Image src="/quadrillion-banknote.jpeg" alt="" width={1200} height={550} /></span>
+            </span>
+          </button>
+        </Reveal>
+        <Reveal className="bill-print-wrap"><button className="print-button" type="button" onClick={() => { const link = document.createElement('a'); link.href = '/quadrillion-banknote.jpeg'; link.download = 'quadrillion-bill.jpeg'; link.click() }}>PRINT YOUR BILL</button></Reveal>
       </div>
     </section>
   )
