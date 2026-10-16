@@ -200,13 +200,13 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .bridge-section { background: #f1d665; color: var(--ink); overflow: visible; }
 .bridge-inner { max-width: 1120px; }
 .bridge-heading { display: flex; justify-content: center; margin: 0 0 clamp(42px, 6vw, 70px); }
-.bridge-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(42px, 7vw, 92px); font-weight: 400; line-height: .92; letter-spacing: .01em; text-align: center; text-shadow: 4px 4px 0 #071c1a; transform: rotate(-2deg); }
+.bridge-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(38px, 6vw, 78px); font-weight: 400; line-height: .92; letter-spacing: .01em; text-align: center; text-shadow: 4px 4px 0 #fff; transform: rotate(-2deg); }
 .bridge-content-wrap { position: relative; }
 .bridge-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; filter: blur(3.5px); }
-.bridge-step { transform: rotate(-1.1deg); }
-.bridge-step:nth-child(2) { transform: rotate(1.1deg); }
-.bridge-step:nth-child(3) { transform: rotate(-.75deg); }
-.bridge-step:nth-child(4) { transform: rotate(1.4deg); }
+.bridge-step { --tilt: -1.1deg; transform: rotate(var(--tilt)); }
+.bridge-step:nth-child(2) { --tilt: 1.1deg; transform: rotate(var(--tilt)); }
+.bridge-step:nth-child(3) { --tilt: -.75deg; transform: rotate(var(--tilt)); }
+.bridge-step:nth-child(4) { --tilt: 1.4deg; transform: rotate(var(--tilt)); }
 .bridge-heading.is-visible h2 { animation: bridge-heading-in 480ms cubic-bezier(.16,1,.3,1) both; }
 .bridge-steps .bridge-step.is-visible { animation: bridge-card-in 520ms cubic-bezier(.16,1,.3,1) both; }
 .bridge-steps .bridge-step:nth-child(2).is-visible { animation-delay: 90ms; }
@@ -214,7 +214,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .bridge-steps .bridge-step:nth-child(4).is-visible { animation-delay: 270ms; }
 .bridge-buy-wrap.is-visible { animation: bridge-buy-in 520ms 390ms cubic-bezier(.16,1,.3,1) both; }
 @keyframes bridge-heading-in { from { opacity: 0; transform: translateY(10px) rotate(-2deg); } to { opacity: 1; transform: translateY(0) rotate(-2deg); } }
-@keyframes bridge-card-in { from { opacity: 0; transform: translateY(14px) rotate(0deg); } to { opacity: 1; } }
+@keyframes bridge-card-in { from { opacity: 0; transform: translateY(14px) rotate(var(--tilt)); } to { opacity: 1; transform: translateY(0) rotate(var(--tilt)); } }
 @keyframes bridge-buy-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 .bridge-step { min-width: 0; min-height: 260px; padding: 24px 20px; display: flex; flex-direction: column; gap: 22px; border: 5px solid var(--ink); border-radius: 24px; background: #f9e39b; color: var(--ink); box-shadow: 10px 12px 0 var(--ink); transform: rotate(-1.1deg); }
 .bridge-step:nth-child(2) { transform: rotate(1.1deg); }
@@ -229,8 +229,8 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .bridge-coming-soon { position: absolute; z-index: 2; top: 50%; left: 50%; padding: 15px 22px; border: 5px solid var(--ink); border-radius: 12px; background: var(--gold); color: var(--ink); box-shadow: 7px 8px 0 var(--ink); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(28px, 4vw, 56px); line-height: 1; transform: translate(-50%, -50%) rotate(-4deg); white-space: nowrap; }
 
 .tokenomics-section { background: var(--coral); color: var(--ivory); }
-.tokenomics-heading { display: flex; justify-content: center; margin-bottom: clamp(34px, 5vw, 54px); }
-.tokenomics-heading h2 { margin: 0; color: var(--ivory); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(48px, 7vw, 88px); font-weight: 400; line-height: .9; text-shadow: 4px 4px 0 #071c1a; transform: rotate(-2deg); }
+.tokenomics-heading { display: flex; justify-content: flex-start; margin-bottom: clamp(34px, 5vw, 54px); }
+.tokenomics-heading h2 { margin: 0; color: var(--ivory); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(42px, 6vw, 74px); font-weight: 400; line-height: .9; text-shadow: 4px 4px 0 #071c1a; transform: rotate(-2deg); }
 .tokenomics-content-wrap { position: relative; }
 .tokenomics-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; filter: blur(3.5px); }
 .tokenomics-card { min-height: 230px; padding: 28px; border: 5px solid var(--ink); border-radius: 24px; background: #f9e39b; color: var(--ink); box-shadow: 10px 12px 0 var(--ink); }
@@ -246,23 +246,25 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 @keyframes tokenomics-heading-in { from { opacity: 0; transform: translateY(10px) rotate(-2deg); } to { opacity: 1; transform: translateY(0) rotate(-2deg); } }
 @keyframes tokenomics-card-in { from { opacity: 0; transform: translateY(14px) rotate(0deg); } to { opacity: 1; } }
 
-.receipts-section { background: var(--ivory); color: var(--ink); }
-.receipts-heading, .memes-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 48px; }
-.receipts-heading h2, .memes-heading h2 { margin: 0; font-size: clamp(56px, 8vw, 118px); line-height: .8; letter-spacing: -.07em; }
-.receipts-heading h2 span, .memes-heading h2 span { color: var(--coral); }
-.receipt-seal { border: 1px solid var(--gold); border-radius: 50%; padding: 22px 18px; color: var(--gold); font-size: 27px; font-weight: 900; line-height: .9; text-align: center; transform: rotate(7deg); }
-.receipt-seal small { display: block; margin-top: 8px; font-size: 8px; letter-spacing: .12em; }
-.receipts-grid { display: grid; grid-template-columns: 1.15fr .85fr .85fr; gap: 16px; align-items: stretch; }
-.receipt-lead { padding: 30px; background: var(--coral); color: var(--ivory); display: flex; flex-direction: column; justify-content: flex-end; min-height: 280px; }
-.receipt-lead p { margin: 0; font-size: clamp(23px, 3vw, 38px); font-weight: 800; line-height: 1; letter-spacing: -.045em; }
-.receipt-lead strong { color: var(--ink); font-size: clamp(27px, 3.5vw, 46px); line-height: 1; letter-spacing: -.06em; }
-.receipt-card { position: relative; padding: 24px; border: 2px solid var(--ink); min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-2deg); transition: transform 220ms ease-out; }
-.receipt-card-offset { background: var(--gold); transform: translateY(26px) rotate(2deg); }
-.receipt-card:hover { transform: translateY(-7px) rotate(-3deg); }
-.receipt-card-offset:hover { transform: translateY(19px) rotate(3deg); }
-.receipt-index { font-size: 10px; letter-spacing: .15em; font-weight: 800; }
-.receipt-card p { margin: 24px 0; font-size: 17px; line-height: 1.25; font-weight: 700; }
-.receipt-mark { align-self: flex-end; color: var(--coral); font-size: 26px; }
+.receipts-section { background: var(--ivory); color: var(--ink); overflow: hidden; }
+.receipts-inner { max-width: 1180px; }
+.receipts-heading { display: flex; justify-content: flex-start; margin-bottom: 12px; }
+.receipts-heading h2 { margin: 0; color: var(--coral); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(48px, 7vw, 86px); font-weight: 400; line-height: .9; text-shadow: 4px 4px 0 var(--ink); transform: rotate(-2deg); }
+.receipts-support { margin-bottom: 34px; color: var(--ink-soft); font-size: clamp(14px, 1.8vw, 18px); line-height: 1.35; }
+.receipts-carousel { overflow: hidden; margin-inline: -4px; padding: 8px 4px 18px; }
+.receipts-track { display: flex; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; padding: 4px 4px 18px; }
+.receipt-card { flex: 0 0 clamp(245px, 28vw, 315px); min-height: 250px; border: 4px solid var(--ink); border-radius: 20px; background: #f9e39b; box-shadow: 9px 10px 0 var(--ink); transform: rotate(-1deg); transition: transform 180ms ease, background-color 180ms ease; scroll-snap-align: start; }
+.receipt-card:nth-child(3n) { background: var(--coral); color: var(--ivory); transform: rotate(1deg); }
+.receipt-card:nth-child(4n) { background: var(--gold); transform: rotate(-1.5deg); }
+.receipt-card a { display: flex; height: 100%; min-height: 250px; flex-direction: column; padding: 20px; color: inherit; }
+.receipt-card:hover { transform: translateY(-6px) rotate(-2deg); background: #f7e28e; }
+.receipt-card:nth-child(3n):hover { transform: translateY(-6px) rotate(2deg); background: #df765d; }
+.receipt-index { font-size: 11px; font-weight: 900; letter-spacing: .14em; }
+.receipt-card h3 { margin: 22px 0 8px; font-family: "Lilita One", Impact, sans-serif; font-size: clamp(22px, 2.4vw, 30px); font-weight: 400; line-height: .98; }
+.receipt-source { font-size: 10px; font-weight: 800; letter-spacing: .04em; opacity: .72; }
+.receipt-card p { margin: 18px 0; font-size: 13px; line-height: 1.35; }
+.receipt-view { margin-top: auto; align-self: flex-end; font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+.receipts-disclaimer { max-width: 850px; margin: 30px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.55; }
 
 .memes-section { background: #e4ded0; color: var(--ink); overflow: hidden; }
 .memes-heading h2 span { color: var(--coral); }
@@ -333,10 +335,10 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .bridge-heading { margin-bottom: 42px; }
   .bridge-heading h2 { font-size: clamp(38px, 10vw, 54px); }
   .bridge-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .bridge-step { min-height: 220px; padding: 20px 16px; border-width: 4px; border-radius: 20px; box-shadow: 8px 9px 0 var(--ink); transform: rotate(-.7deg); }
-  .bridge-step:nth-child(2) { transform: rotate(.7deg); }
-  .bridge-step:nth-child(3) { transform: rotate(-.5deg); }
-  .bridge-step:nth-child(4) { transform: rotate(.8deg); }
+  .bridge-step { min-height: 220px; padding: 20px 16px; border-width: 4px; border-radius: 20px; box-shadow: 8px 9px 0 var(--ink); --tilt: -.7deg; transform: rotate(var(--tilt)); }
+  .bridge-step:nth-child(2) { --tilt: .7deg; transform: rotate(var(--tilt)); }
+  .bridge-step:nth-child(3) { --tilt: -.5deg; transform: rotate(var(--tilt)); }
+  .bridge-step:nth-child(4) { --tilt: .8deg; transform: rotate(var(--tilt)); }
   .tokenomics-cards { grid-template-columns: 1fr; gap: 18px; }
   .tokenomics-card { min-height: 190px; padding: 22px; }
   .tokenomics-coming-soon { font-size: clamp(26px, 9vw, 42px); }
@@ -346,11 +348,13 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .bridge-buy-wrap { margin-top: 34px; }
   .bridge-buy-button { border-width: 4px; box-shadow: 7px 8px 0 var(--ink); }
   .bridge-coming-soon { font-size: clamp(27px, 8vw, 42px); }
-  .receipts-heading, .memes-heading { flex-direction: column; gap: 18px; }
-  .receipt-seal, .meme-caption { align-self: flex-start; text-align: left; }
-  .receipts-grid, .join-links { grid-template-columns: 1fr; }
-  .receipt-card-offset { transform: none; }
-  .receipt-card-offset:hover { transform: translateY(-7px) rotate(3deg); }
+  .receipts-heading { margin-bottom: 12px; }
+  .receipts-heading h2 { font-size: clamp(46px, 14vw, 68px); }
+  .receipts-track { gap: 14px; }
+  .receipt-card { flex-basis: min(78vw, 290px); min-height: 235px; }
+  .receipt-card a { min-height: 235px; padding: 18px; }
+  .receipts-disclaimer { margin-top: 22px; font-size: 10px; }
+  .join-links { grid-template-columns: 1fr; }
   .meme-wall { grid-template-columns: 1fr 1fr; grid-template-rows: 190px 140px 170px; }
   .meme-tall { grid-row: 1 / 3; }
   .meme-logo { grid-row: 3; grid-column: 1; }
