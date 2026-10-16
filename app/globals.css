@@ -200,10 +200,26 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .bridge-section { background: #f1d665; color: var(--ink); overflow: visible; }
 .bridge-inner { max-width: 1120px; }
 .bridge-heading { display: flex; justify-content: center; margin: 0 0 clamp(42px, 6vw, 70px); }
-.bridge-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(42px, 7vw, 92px); font-weight: 400; line-height: .92; letter-spacing: .01em; text-align: center; }
+.bridge-heading h2 { margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(42px, 7vw, 92px); font-weight: 400; line-height: .92; letter-spacing: .01em; text-align: center; text-shadow: 4px 4px 0 #071c1a; transform: rotate(-2deg); }
 .bridge-content-wrap { position: relative; }
 .bridge-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; filter: blur(3.5px); }
-.bridge-step { min-width: 0; min-height: 260px; padding: 24px 20px; display: flex; flex-direction: column; gap: 22px; border: 5px solid var(--ink); border-radius: 24px; background: #f9e39b; color: var(--ink); box-shadow: 10px 12px 0 var(--ink); }
+.bridge-step { transform: rotate(-1.1deg); }
+.bridge-step:nth-child(2) { transform: rotate(1.1deg); }
+.bridge-step:nth-child(3) { transform: rotate(-.75deg); }
+.bridge-step:nth-child(4) { transform: rotate(1.4deg); }
+.bridge-heading.is-visible h2 { animation: bridge-heading-in 480ms cubic-bezier(.16,1,.3,1) both; }
+.bridge-steps .bridge-step.is-visible { animation: bridge-card-in 520ms cubic-bezier(.16,1,.3,1) both; }
+.bridge-steps .bridge-step:nth-child(2).is-visible { animation-delay: 90ms; }
+.bridge-steps .bridge-step:nth-child(3).is-visible { animation-delay: 180ms; }
+.bridge-steps .bridge-step:nth-child(4).is-visible { animation-delay: 270ms; }
+.bridge-buy-wrap.is-visible { animation: bridge-buy-in 520ms 390ms cubic-bezier(.16,1,.3,1) both; }
+@keyframes bridge-heading-in { from { opacity: 0; transform: translateY(10px) rotate(-2deg); } to { opacity: 1; transform: translateY(0) rotate(-2deg); } }
+@keyframes bridge-card-in { from { opacity: 0; transform: translateY(14px) rotate(0deg); } to { opacity: 1; } }
+@keyframes bridge-buy-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.bridge-step { min-width: 0; min-height: 260px; padding: 24px 20px; display: flex; flex-direction: column; gap: 22px; border: 5px solid var(--ink); border-radius: 24px; background: #f9e39b; color: var(--ink); box-shadow: 10px 12px 0 var(--ink); transform: rotate(-1.1deg); }
+.bridge-step:nth-child(2) { transform: rotate(1.1deg); }
+.bridge-step:nth-child(3) { transform: rotate(-.75deg); }
+.bridge-step:nth-child(4) { transform: rotate(1.4deg); }
 .step-number { align-self: flex-start; display: grid; place-items: center; width: 54px; height: 54px; border: 4px solid var(--ink); border-radius: 50%; font-family: "Lilita One", Impact, sans-serif; font-size: 27px; line-height: 1; }
 .bridge-step h3 { margin: 6px 0 12px; font-family: "Lilita One", Impact, sans-serif; font-size: clamp(21px, 2.15vw, 32px); font-weight: 400; line-height: .98; }
 .bridge-step p { margin: 0; font-size: 15px; line-height: 1.35; }
@@ -212,6 +228,23 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .bridge-buy-button:active { transform: translate(6px, 7px); box-shadow: 2px 2px 0 var(--ink); }
 .bridge-coming-soon { position: absolute; z-index: 2; top: 50%; left: 50%; padding: 15px 22px; border: 5px solid var(--ink); border-radius: 12px; background: var(--gold); color: var(--ink); box-shadow: 7px 8px 0 var(--ink); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(28px, 4vw, 56px); line-height: 1; transform: translate(-50%, -50%) rotate(-4deg); white-space: nowrap; }
 
+.tokenomics-section { background: var(--coral); color: var(--ivory); }
+.tokenomics-heading { display: flex; justify-content: center; margin-bottom: clamp(34px, 5vw, 54px); }
+.tokenomics-heading h2 { margin: 0; color: var(--ivory); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(48px, 7vw, 88px); font-weight: 400; line-height: .9; text-shadow: 4px 4px 0 #071c1a; transform: rotate(-2deg); }
+.tokenomics-content-wrap { position: relative; }
+.tokenomics-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; filter: blur(3.5px); }
+.tokenomics-card { min-height: 230px; padding: 28px; border: 5px solid var(--ink); border-radius: 24px; background: #f9e39b; color: var(--ink); box-shadow: 10px 12px 0 var(--ink); }
+.tokenomics-card:first-child { transform: rotate(-1.2deg); }
+.tokenomics-card:last-child { transform: rotate(1.2deg); }
+.tokenomics-card h3 { margin: 0; font-family: "Lilita One", Impact, sans-serif; font-size: clamp(24px, 3vw, 38px); font-weight: 400; }
+.tokenomics-reserved { min-height: 88px; margin-top: 24px; border-top: 3px solid rgba(11,41,38,.35); }
+.tokenomics-card button { margin-top: 20px; border: 3px solid var(--ink); border-radius: 8px; padding: 8px 14px; background: var(--coral); color: var(--ivory); font-family: inherit; font-size: 12px; font-weight: 900; letter-spacing: .12em; }
+.tokenomics-coming-soon { position: absolute; z-index: 2; top: 50%; left: 50%; padding: 14px 22px; border: 5px solid var(--ink); border-radius: 12px; background: var(--gold); color: var(--ink); box-shadow: 7px 8px 0 var(--ink); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(28px, 4vw, 52px); line-height: 1; transform: translate(-50%, -50%) rotate(-4deg); white-space: nowrap; }
+.tokenomics-heading.is-visible h2 { animation: tokenomics-heading-in 480ms cubic-bezier(.16,1,.3,1) both; }
+.tokenomics-cards .tokenomics-card.is-visible { animation: tokenomics-card-in 520ms cubic-bezier(.16,1,.3,1) both; }
+.tokenomics-cards .tokenomics-card:last-child.is-visible { animation-delay: 110ms; }
+@keyframes tokenomics-heading-in { from { opacity: 0; transform: translateY(10px) rotate(-2deg); } to { opacity: 1; transform: translateY(0) rotate(-2deg); } }
+@keyframes tokenomics-card-in { from { opacity: 0; transform: translateY(14px) rotate(0deg); } to { opacity: 1; } }
 
 .receipts-section { background: var(--ivory); color: var(--ink); }
 .receipts-heading, .memes-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 48px; }
@@ -300,7 +333,13 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .bridge-heading { margin-bottom: 42px; }
   .bridge-heading h2 { font-size: clamp(38px, 10vw, 54px); }
   .bridge-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .bridge-step { min-height: 220px; padding: 20px 16px; border-width: 4px; border-radius: 20px; box-shadow: 8px 9px 0 var(--ink); }
+  .bridge-step { min-height: 220px; padding: 20px 16px; border-width: 4px; border-radius: 20px; box-shadow: 8px 9px 0 var(--ink); transform: rotate(-.7deg); }
+  .bridge-step:nth-child(2) { transform: rotate(.7deg); }
+  .bridge-step:nth-child(3) { transform: rotate(-.5deg); }
+  .bridge-step:nth-child(4) { transform: rotate(.8deg); }
+  .tokenomics-cards { grid-template-columns: 1fr; gap: 18px; }
+  .tokenomics-card { min-height: 190px; padding: 22px; }
+  .tokenomics-coming-soon { font-size: clamp(26px, 9vw, 42px); }
   .step-number { width: 46px; height: 46px; border-width: 3px; font-size: 23px; }
   .bridge-step h3 { font-size: clamp(20px, 5.5vw, 28px); }
   .bridge-step p { font-size: 14px; }
