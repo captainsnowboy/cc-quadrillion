@@ -175,43 +175,57 @@ function ReceiptsSection() {
   )
 }
 
-function MemesSection() {
-  const [selected, setSelected] = useState<string | null>(null)
-  const images = [
-    { src: '/quadrillion-banknote.jpeg', alt: 'Quadrillion novelty banknote', className: 'meme-tall' },
-    { src: '/quad-logo.png', alt: 'QUAD logo', className: 'meme-logo' },
-    { src: '/quadrillion-banknote.jpeg', alt: 'Quadrillion banknote detail', className: 'meme-wide' },
-  ]
+const memeImages = [
+  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9df720a683513abf2b2477f2674b38f1-PcxSrEZfjDAzyTYEDErRWBmX6qBB6b.jpeg', alt: 'Quadrillion meme showing a crowded parliamentary scene' },
+  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5793-TBcTTh202wNXngwcrUuTFBwlfQ2y06.gif', alt: 'Animated Quadrillion meme showing money flying from a podium' },
+]
 
+const memeCards = [memeImages[0], null, null, memeImages[1], null, null, null, null]
+const googleFormUrl = ''
+const quadXUrl = ''
+const telegramUrl = ''
+
+function MemeCard({ meme, index }: { meme: (typeof memeImages)[number] | null; index: number }) {
+  return <article className={`meme-gallery-card ${meme ? 'has-artwork' : 'is-empty'} meme-gallery-card-${index % 4}`}>
+    {meme ? <img src={meme.src} alt={meme.alt} /> : <span className="empty-card-label">COMMUNITY DROP</span>}
+  </article>
+}
+
+function MemesSection() {
   return (
     <section id="memes" className="content-section memes-section" aria-labelledby="memes-title">
-      <div className="section-inner">
-        <Reveal className="section-kicker">08 / COMMUNITY WALL</Reveal>
-        <div className="memes-heading"><Reveal><h2 id="memes-title">MEMES<br /><span>ONLY.</span></h2></Reveal><Reveal className="meme-caption">THE INTERNET<br />UNDERSTANDS.</Reveal></div>
-        <div className="meme-wall">{images.map((image, index) => <Reveal key={`${image.src}-${index}`} className={`meme-tile ${image.className}`}><button type="button" aria-label={`Open ${image.alt}`} onClick={() => setSelected(image.src)}><Image src={image.src} alt={image.alt} width={1200} height={550} /></button></Reveal>)}</div>
-        <p className="meme-empty-note">Original meme drops will live here as the community makes them.</p>
+      <div className="section-inner memes-inner">
+        <Reveal className="memes-heading"><h2 id="memes-title">SPREAD THE WORD</h2></Reveal>
+        <Reveal className="meme-gallery" aria-label="Community meme gallery">
+          <div className="meme-gallery-row meme-gallery-row-forward"><div className="meme-gallery-track">{memeCards.map((meme, index) => <MemeCard key={`forward-${index}`} meme={meme} index={index} />)}{memeCards.map((meme, index) => <MemeCard key={`forward-copy-${index}`} meme={meme} index={index} />)}</div></div>
+          <div className="meme-slogan">BUY QUADRILLION OR STAY POOR</div>
+          <div className="meme-gallery-row meme-gallery-row-reverse"><div className="meme-gallery-track">{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-${index}`} meme={meme} index={index} />)}{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-copy-${index}`} meme={meme} index={index} />)}</div></div>
+        </Reveal>
+        <div className="meme-actions"><a className={`meme-submit-button ${googleFormUrl ? '' : 'is-unconfigured'}`} href={googleFormUrl || undefined} target={googleFormUrl ? '_blank' : undefined} rel="noreferrer" aria-disabled={!googleFormUrl} onClick={(event) => { if (!googleFormUrl) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
       </div>
-      {selected ? <div className="meme-lightbox" role="dialog" aria-modal="true" aria-label="Expanded meme" onClick={() => setSelected(null)}><button type="button" className="lightbox-close" aria-label="Close expanded meme" onClick={() => setSelected(null)}>CLOSE ×</button><Image src={selected} alt="Expanded QUAD meme" width={1200} height={550} onClick={(event) => event.stopPropagation()} /></div> : null}
     </section>
   )
+}
+
+function SocialLink({ href, children, className }: { href: string; children: ReactNode; className: string }) {
+  return <a className={`social-link ${className} ${href ? '' : 'is-unconfigured'}`} href={href || undefined} target={href ? '_blank' : undefined} rel="noreferrer" aria-disabled={!href} onClick={(event) => { if (!href) event.preventDefault() }}>{children}</a>
 }
 
 function JoinSection() {
   return (
     <section id="join-quadrillion" className="content-section join-section" aria-labelledby="join-title">
       <div className="section-inner join-inner">
-        <Reveal className="section-kicker">09 / THE COMMUNITY</Reveal>
-        <Reveal className="join-heading"><h2 id="join-title">JOIN<br /><span>QUADRILLION.</span></h2></Reveal>
-        <Reveal className="join-copy"><p>The big number is only the beginning. Bring the meme, the receipts, and whatever comes next.</p></Reveal>
-        <div className="join-links"><Reveal className="join-link join-link-primary"><span>QUAD COMMUNITY</span><strong>DESTINATION PENDING</strong><small>Only verified QUAD channels appear here.</small></Reveal><Reveal className="join-link join-link-secondary"><span>X / TELEGRAM / DISCORD</span><strong>NOT CONNECTED</strong><small>We won&apos;t invent a community link.</small></Reveal></div>
-        <Image className="join-logo" src="/quad-logo.png" alt="QUAD logo" width={160} height={160} />
+        <Reveal className="join-heading"><h2 id="join-title">JOIN QUADRILLION</h2></Reveal>
+        <Reveal className="join-copy"><p>The ticker is yours now. Spread the word.</p></Reveal>
+        <div className="join-links"><Reveal><SocialLink href={quadXUrl} className="social-link-x"><span aria-hidden="true">𝕏</span> FOLLOW ON X</SocialLink></Reveal><Reveal><SocialLink href={telegramUrl} className="social-link-telegram"><span aria-hidden="true">✈</span> JOIN TELEGRAM</SocialLink></Reveal></div>
+        <Reveal className="join-risk"><p>QUAD is a meme token created for entertainment, with no intrinsic value and no expectation of financial return. There is no formal team or guaranteed roadmap. Its value may fluctuate significantly, and you could lose the entire amount you spend. Nothing on this website is financial advice. Always do your own research and never spend more than you can afford to lose.</p></Reveal>
       </div>
     </section>
   )
 }
 
 function SiteFooter() {
-  return <footer className="site-footer"><div><a className="footer-brand" href="#top"><Image src="/quad-logo.png" alt="QUAD logo" width={36} height={36} /><span>$QUAD</span></a><p>QUAD is an independent community-driven meme. Not affiliated with, endorsed by, or sponsored by Canton Network or Digital Asset.</p></div><nav aria-label="Footer navigation">{navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}<a href="#join-quadrillion">Join Quadrillion</a></nav><p className="footer-risk">QUAD is a meme with no intrinsic value.</p></footer>
+  return <footer className="site-footer"><span>© 2026 QUADRILLION ($QUAD)</span></footer>
 }
 
 function BillSection() {
