@@ -145,12 +145,31 @@ function TokenomicsSection() {
 }
 
 function ReceiptsSection() {
+  const receipts = [
+    ['THE FOUR QUADRILLION CLAIM', '@CantonNetwork · 27 Aug 2026', 'Yuval Rooz discusses DTCC\'s $4 quadrillion annual transaction scale and production trades on Canton.', 'https://x.com/CantonNetwork/status/2092771827747823842'],
+    ['QUADRILLIONS.', '@CantonNetwork · 5 Jun 2026', 'A short Canton Network video built around one word: Quadrillions.', 'https://x.com/CantonNetwork/status/2062694138307584233'],
+    ['THE QUADRILLIONS PODCAST', '@CantonNetwork · 19 Feb 2026', 'Episode 6 featuring Yuval Rooz, Jason Yanowitz, Mathew McDermott, and Nick Shalek.', 'https://x.com/CantonNetwork/status/2024513305092772216'],
+    ['PRIVACY, ON THE RECORD', '@CantonNetwork · 6 Feb 2026', 'A Quadrillions clip featuring Wesarn_real discussing privacy.', 'https://x.com/CantonNetwork/status/2019765017554657572'],
+    ['STABLECOINS & PRIVACY', '@CantonNetwork · 4 Feb 2026', 'Episode 5 of Quadrillions, featuring Wesarn_real.', 'https://x.com/CantonNetwork/status/2019159275894181890'],
+    ['QUADRILLIONS!!!', 'Yuval Rooz · 20 Dec 2025', 'Yuval highlights the scale of DTCC in a post quoting a Schwab Network video.', 'https://x.com/YuvalRooz/status/2002372239337877746'],
+    ['NEW GOALS. QUADRILLIONS.', 'Yuval Rooz · 15 May 2026', 'A post connecting the industry\'s ambitions with the word Quadrillions.', 'https://x.com/YuvalRooz/status/2055215971325882428'],
+    ['WHY THE PODCAST IS CALLED QUADRILLIONS', 'Yuval Rooz · 12 May 2026', 'Yuval contrasts crypto market figures with the scale of real financial markets.', 'https://x.com/YuvalRooz/status/2054191986123415658'],
+    ['NOT EVEN A DROP', 'Yuval Rooz · 11 Jan 2026', 'Yuval uses a drop-in-the-bucket comparison to make a point about financial scale.', 'https://x.com/yuvalrooz/status/2109982541335671002'],
+    ['THE BIGGER PICTURE', 'Yuval Rooz · 11 Jan 2026', 'Another post from Yuval Rooz in the wider Quadrillions conversation.', 'https://x.com/yuvalrooz/status/2109992002695950713'],
+    ['THE QUADRILLIONS PODCAST', 'Yuval Rooz · 12 Dec 2025', 'Yuval explains why the podcast was given the name Quadrillions.', 'https://x.com/YuvalRooz/status/1999333753320247744'],
+    ['A QUADRILLION-DOLLAR-SIZED IDEA', 'Eric Saraniecki (@wesarn_real) · 17 Dec 2025', 'A post about driving large-scale utility through the DTCC and Treasuries announcement.', 'https://x.com/wesarn_real/status/2001316802010169594'],
+    ['YUVAL ROOZ ON X', 'Original post', '', 'https://x.com/YuvalRooz/status/2010443967939387406'],
+  ]
+
   return (
     <section id="receipts" className="content-section receipts-section" aria-labelledby="receipts-title">
-      <div className="section-inner">
-        <Reveal className="section-kicker">07 / THE RECEIPTS</Reveal>
-        <div className="receipts-heading"><Reveal><h2 id="receipts-title">THE<br /><span>RECEIPTS.</span></h2></Reveal><Reveal className="receipt-seal">10¹⁵<br /><small>DOCUMENTED</small></Reveal></div>
-        <div className="receipts-grid"><Reveal className="receipt-lead"><p>They kept talking about quadrillions.</p><strong>We kept the receipts.</strong></Reveal><Reveal className="receipt-card"><span className="receipt-index">A / 01</span><p>Canton&apos;s own language around settlement scale is the spark behind QUAD.</p><span className="receipt-mark">↗</span></Reveal><Reveal className="receipt-card receipt-card-offset"><span className="receipt-index">B / 02</span><p>QUAD is an independent community-driven meme, not an official Canton product.</p><span className="receipt-mark">↗</span></Reveal></div>
+      <div className="section-inner receipts-inner">
+        <Reveal className="receipts-heading"><h2 id="receipts-title">THE RECEIPTS</h2></Reveal>
+        <Reveal className="receipts-support">Quadrillion isn&apos;t just random. here are proofs of where it was mentioned</Reveal>
+        <div className="receipts-carousel" role="region" aria-label="Quadrillion source posts">
+          <div className="receipts-track">{receipts.map(([title, source, description, href], index) => <Reveal key={href} className={`receipt-card receipt-card-${index % 4}`}><a href={href} target="_blank" rel="noreferrer"><span className="receipt-index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><span className="receipt-source">{source}</span>{description ? <p>{description}</p> : <p>OPEN ORIGINAL POST</p>}<span className="receipt-view">VIEW POST ↗</span></a></Reveal>)}</div>
+        </div>
+        <p className="receipts-disclaimer">QUADRILLION ($QUAD) is an independent, community-driven meme project. It is not affiliated with, endorsed by, sponsored by, or officially connected to Canton Network, Digital Asset, or their teams. References above are provided for context and do not imply their support or approval of QUAD.</p>
       </div>
     </section>
   )
