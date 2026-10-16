@@ -85,17 +85,6 @@ function ContentSections() {
           </div>
         </div>
       </section>
-      <section id="whats-canton" className="content-section canton-section" aria-labelledby="canton-title">
-        <div className="section-inner canton-inner">
-          <Reveal className="section-kicker">03 / WHAT&apos;S CANTON?</Reveal>
-          <div className="canton-heading"><Reveal><h2 id="canton-title">WHAT&apos;S<br /><span>CANTON?</span></h2></Reveal><Reveal className="canton-stamp">ONCHAIN<br /><small>THE NETWORK</small></Reveal></div>
-          <div className="canton-grid">
-            <Reveal className="canton-feature"><p className="card-label">THE SIMPLE VERSION</p><h3>A NETWORK<br />BUILT FOR<br /><em>WHAT&apos;S NEXT.</em></h3></Reveal>
-            <Reveal className="canton-copy"><p>Canton is building toward a future where massive financial markets can move and settle onchain.</p><p>It&apos;s the infrastructure underneath the conversation about quadrillions — a network designed for real-world financial activity.</p></Reveal>
-            <Reveal className="canton-detail"><span className="detail-number">03</span><p>BIG MARKETS.<br />ONE SHARED<br />LEDGER.</p></Reveal>
-          </div>
-        </div>
-      </section>
       <BillSection />
       <BridgeSection />
       <BuyQuadSection />
