@@ -86,6 +86,7 @@ function ContentSections() {
       </section>
       <BillSection />
       <BridgeSection />
+      <TokenomicsSection />
       <ReceiptsSection />
       <MemesSection />
       <JoinSection />
@@ -110,6 +111,33 @@ function BridgeSection() {
           <div className="bridge-steps">{steps.map(([number, title, copy]) => <Reveal key={number} className="bridge-step"><span className="step-number">{number}</span>{title ? <div><h3>{title}</h3><p>{copy}</p></div> : null}</Reveal>)}</div>
           <Reveal className="bridge-buy-wrap"><button className="bridge-buy-button" type="button">Buy $QUAD</button></Reveal>
           <div className="bridge-coming-soon" aria-hidden="true">COMING SOON</div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function TokenomicsSection() {
+  const [copied, setCopied] = useState(false)
+  const tokenIdentifier = ''
+
+  async function copyIdentifier() {
+    if (!tokenIdentifier) return
+    await navigator.clipboard.writeText(tokenIdentifier)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1600)
+  }
+
+  return (
+    <section id="tokenomics" className="content-section tokenomics-section" aria-labelledby="tokenomics-title">
+      <div className="section-inner">
+        <Reveal className="tokenomics-heading"><h2 id="tokenomics-title">TOKENOMICS</h2></Reveal>
+        <div className="tokenomics-content-wrap">
+          <div className="tokenomics-cards">
+            <Reveal className="tokenomics-card"><h3>TOTAL SUPPLY</h3><div className="tokenomics-reserved" aria-label="Total supply reserved for future value" /></Reveal>
+            <Reveal className="tokenomics-card"><h3>TOKEN IDENTIFIER</h3><div className="tokenomics-reserved" aria-label="Token identifier reserved for future value" /><button type="button" disabled={!tokenIdentifier} onClick={copyIdentifier}>{copied ? 'COPIED' : 'COPY'}</button></Reveal>
+          </div>
+          <div className="tokenomics-coming-soon" aria-hidden="true">COMING SOON</div>
         </div>
       </div>
     </section>
