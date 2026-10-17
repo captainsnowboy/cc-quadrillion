@@ -270,7 +270,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .receipts-section { background: var(--ivory); color: var(--ink); overflow: hidden; }
 .receipts-inner { max-width: 1180px; }
 .receipts-heading { display: flex; justify-content: flex-start; margin-bottom: 12px; }
-.receipts-heading h2 { margin: 0; color: var(--coral); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(37px, 4.9vw, 60px); font-weight: 400; line-height: .9; text-shadow: 4px 4px 0 var(--ink); transform: rotate(-2deg); }
+.receipts-heading h2 { margin: 0; color: var(--coral); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(37px, 4.9vw, 60px); font-weight: 400; line-height: .9; text-shadow: 4px 4px 0 #fff; transform: rotate(-2deg); }
 .receipts-support { margin-bottom: 34px; color: var(--ink-soft); font-size: clamp(14px, 1.8vw, 18px); line-height: 1.35; }
 .receipts-carousel { overflow: hidden; margin-inline: -4px; padding: 8px 4px 18px; }
 .receipts-track { display: flex; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; padding: 4px 4px 18px; }
@@ -355,12 +355,12 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .why-panel { grid-column: auto; }
   .why-quote { grid-column: auto; }
   .bill-heading { margin-bottom: 20px; }
-  .bill-heading h2 { font-size: clamp(27px, 7vw, 55px); }
+  .bill-heading h2 { font-size: clamp(38px, 10vw, 55px); }
   .bill-copy { max-width: none; margin-bottom: 28px; }
   .bill-stage { width: 100%; }
   .bill-print-wrap { margin-top: 28px; }
   .bridge-heading { margin-bottom: 42px; }
-  .bridge-heading h2 { font-size: clamp(27px, 7vw, 38px); }
+  .bridge-heading h2 { font-size: clamp(38px, 10vw, 54px); }
   .bridge-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .bridge-step { min-height: 220px; padding: 20px 16px; border-width: 4px; border-radius: 20px; box-shadow: 8px 9px 0 var(--ink); --tilt: -.7deg; transform: rotate(var(--tilt)); }
   .bridge-step:nth-child(2) { --tilt: .7deg; transform: rotate(var(--tilt)); }
@@ -376,7 +376,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .bridge-buy-button { border-width: 4px; box-shadow: 7px 8px 0 var(--ink); }
   .bridge-coming-soon { font-size: clamp(27px, 8vw, 42px); }
   .receipts-heading { margin-bottom: 12px; }
-  .receipts-heading h2 { font-size: clamp(32px, 9.8vw, 48px); }
+  .receipts-heading h2 { font-size: clamp(46px, 14vw, 68px); }
   .receipts-track { gap: 14px; }
   .receipt-card { flex-basis: min(78vw, 290px); min-height: 235px; }
   .receipt-card a { min-height: 235px; padding: 18px; }
