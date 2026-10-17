@@ -218,7 +218,7 @@ function MemesSection() {
         <Reveal className="memes-heading"><h2 id="memes-title">SPREAD THE WORD</h2></Reveal>
         <Reveal className="meme-gallery" aria-label="Community meme gallery">
           <div className="meme-gallery-row meme-gallery-row-forward"><div className="meme-gallery-track">{memeCards.map((meme, index) => <MemeCard key={`forward-${index}`} meme={meme} index={index} />)}{memeCards.map((meme, index) => <MemeCard key={`forward-copy-${index}`} meme={meme} index={index} />)}</div></div>
-          <div className="meme-slogan">BUY QUADRILLION OR STAY POOR</div>
+          <div className="meme-slogan" aria-label="BUY QUADRILLION OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLION OR STAY POOR</span><span aria-hidden="true">BUY QUADRILLION OR STAY POOR</span></div></div>
           <div className="meme-gallery-row meme-gallery-row-reverse"><div className="meme-gallery-track">{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-${index}`} meme={meme} index={index} />)}{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-copy-${index}`} meme={meme} index={index} />)}</div></div>
         </Reveal>
         <div className="meme-actions"><a className={`meme-submit-button ${googleFormUrl ? '' : 'is-unconfigured'}`} href={googleFormUrl || undefined} target={googleFormUrl ? '_blank' : undefined} rel="noreferrer" aria-disabled={!googleFormUrl} onClick={(event) => { if (!googleFormUrl) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
