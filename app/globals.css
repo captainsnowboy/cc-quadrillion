@@ -271,17 +271,17 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .memes-inner { max-width: 1320px; }
 .memes-heading { display: flex; justify-content: flex-start; margin-bottom: 30px; }
 .memes-heading h2 { margin: 0; color: var(--coral); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(44px, 6vw, 78px); font-weight: 400; line-height: .92; letter-spacing: .01em; text-shadow: 4px 4px 0 var(--ivory); transform: rotate(-2deg); }
-.meme-gallery { position: relative; display: flex; flex-direction: column; gap: 22px; overflow: hidden; padding: 8px 0 16px; }
+.meme-gallery { position: relative; display: flex; flex-direction: column; gap: clamp(30px, 4vw, 54px); overflow: hidden; padding: 8px 0 16px; }
 .meme-gallery-row { overflow: hidden; width: 100%; }
 .meme-gallery-track { display: flex; width: max-content; gap: 18px; will-change: transform; animation: meme-marquee 42s linear infinite; }
 .meme-gallery-row-reverse .meme-gallery-track { animation-direction: reverse; animation-duration: 48s; }
-.meme-gallery-card { flex: 0 0 clamp(190px, 22vw, 290px); height: clamp(135px, 16vw, 205px); overflow: hidden; border: 4px solid var(--ink); border-radius: 20px; background: var(--ivory); box-shadow: 9px 10px 0 var(--ink); transform: rotate(-1.2deg); }
+.meme-gallery-card { flex: 0 0 clamp(165px, 18vw, 235px); height: clamp(118px, 13vw, 170px); overflow: hidden; border: 4px solid var(--ink); border-radius: 20px; background: var(--ivory); box-shadow: 9px 10px 0 var(--ink); transform: rotate(-1.2deg); }
 .meme-gallery-card:nth-child(2n) { transform: rotate(1.3deg); }
 .meme-gallery-card:nth-child(3n) { transform: rotate(-.6deg); background: var(--gold); }
 .meme-gallery-card img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .meme-gallery-card.is-empty { display: grid; place-items: center; }
 .empty-card-label { color: rgba(11,41,38,.35); font-size: 10px; font-weight: 900; letter-spacing: .14em; }
-.meme-slogan { align-self: center; z-index: 2; margin: -4px 0; padding: 14px 22px; border: 4px solid var(--ink); border-radius: 12px; background: var(--coral); color: var(--ivory); box-shadow: 7px 8px 0 var(--ink); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(21px, 3.5vw, 44px); line-height: 1; text-align: center; transform: rotate(-1.5deg); }
+.meme-slogan { align-self: center; z-index: 2; margin: -8px 0; color: transparent; -webkit-text-stroke: 2px var(--ink); font-family: "Lilita One", Impact, sans-serif; font-size: clamp(30px, 5.4vw, 72px); line-height: .9; letter-spacing: .01em; text-align: center; white-space: nowrap; transform: rotate(-1deg); }
 .meme-actions { display: flex; justify-content: flex-end; margin-top: 30px; }
 .meme-submit-button { display: inline-flex; align-items: center; gap: 10px; border: 4px solid var(--ink); border-radius: 12px; padding: 12px 16px; background: var(--gold); color: var(--ink); box-shadow: 6px 7px 0 var(--ink); font-size: 11px; font-weight: 900; letter-spacing: .11em; transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; }
 .meme-submit-button:hover { transform: translate(-2px, -2px); background: #f7e28e; box-shadow: 8px 9px 0 var(--ink); }
@@ -358,11 +358,11 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
   .receipt-card a { min-height: 235px; padding: 18px; }
   .receipts-disclaimer { margin-top: 22px; font-size: 10px; }
   .memes-heading h2 { font-size: clamp(40px, 12vw, 64px); }
-  .meme-gallery { gap: 16px; }
+  .meme-gallery { gap: 30px; }
   .meme-gallery-track { gap: 14px; animation-duration: 34s; }
   .meme-gallery-row-reverse .meme-gallery-track { animation-duration: 40s; }
-  .meme-gallery-card { flex-basis: min(68vw, 250px); height: 168px; border-width: 3px; border-radius: 16px; box-shadow: 7px 8px 0 var(--ink); }
-  .meme-slogan { max-width: calc(100% - 20px); padding: 12px 14px; font-size: clamp(19px, 6vw, 30px); }
+  .meme-gallery-card { flex-basis: min(52vw, 190px); height: 132px; border-width: 3px; border-radius: 16px; box-shadow: 7px 8px 0 var(--ink); }
+  .meme-slogan { max-width: none; margin: -2px 0; font-size: clamp(28px, 8vw, 46px); -webkit-text-stroke: 1.5px var(--ink); }
   .meme-actions { margin-top: 24px; }
   .join-links { flex-wrap: wrap; gap: 16px; }
   .social-link { padding: 14px 16px; }
