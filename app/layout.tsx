@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'QUADRILLION — $QUAD',
+  title: 'QUADRILLIONS — $QUAD',
   description: 'They kept saying quadrillions. We made it a ticker.',
   generator: 'v0.app',
   icons: {

@@ -41,10 +41,10 @@ export function SiteHeader() {
 }
 
 export function HeroArtwork() {
-  return <div className="artwork" aria-label="Floating QUADRILLION novelty banknote">
+  return <div className="artwork" aria-label="Floating QUADRILLIONS novelty banknote">
     <div className="orbit orbit-one" />
     <div className="orbit orbit-two" />
-    <div className="artwork-safe-zone"><Image className="banknote" src="/quadrillion-banknote.jpeg" alt="A fictional QUADRILLION novelty banknote" width={900} height={406} priority /></div>
+    <div className="artwork-safe-zone"><Image className="banknote" src="/quadrillion-banknote.jpeg" alt="A fictional QUADRILLIONS novelty banknote" width={900} height={406} priority /></div>
   </div>
 }
 
@@ -53,7 +53,7 @@ export function Hero() {
     <div className="hero-inner">
       <section className="hero-copy" aria-labelledby="hero-title">
         <p className="eyebrow">COMMUNITY MEME / CANTON NETWORK</p>
-        <h1 id="hero-title"><span>QUADRILLION</span><em>AFTER A TRILLION.</em></h1>
+        <h1 id="hero-title"><span>QUADRILLIONS</span><em>AFTER A TRILLION.</em></h1>
         <p className="hero-description">They kept saying quadrillions. We made it a ticker.</p>
         <div className="hero-actions"><button className="buy-button" type="button">BUY $QUAD</button><a className="scroll-link" href="#what-is-this">WHAT IS THIS? <span aria-hidden="true">↓</span></a></div>
       </section>
