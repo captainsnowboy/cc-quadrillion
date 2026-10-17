@@ -15,6 +15,14 @@ const navItems = [
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setMenuOpen(false) }
+    document.addEventListener('keydown', closeOnEscape)
+    document.body.classList.add('menu-is-open')
+    return () => { document.removeEventListener('keydown', closeOnEscape); document.body.classList.remove('menu-is-open') }
+  }, [menuOpen])
+
   return (
     <>
       <header className="site-header">
@@ -30,6 +38,7 @@ function Header() {
           <span className="menu-lines" aria-hidden="true"><i /><i /></span>
         </button>
       </header>
+      <div className={`menu-backdrop ${menuOpen ? 'is-visible' : ''}`} aria-hidden="true" onClick={() => setMenuOpen(false)} />
       <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} id="mobile-menu" aria-hidden={!menuOpen}>
         <nav aria-label="Mobile navigation">
           {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}
@@ -45,21 +54,31 @@ function Header() {
 function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [enhanced, setEnhanced] = useState(false)
 
   useEffect(() => {
     const node = ref.current
     if (!node) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setVisible(true)
-        observer.disconnect()
-      }
-    }, { threshold: 0.12 })
+    setEnhanced(true)
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.08, rootMargin: '12% 0px 12% 0px' })
     observer.observe(node)
     return () => observer.disconnect()
   }, [])
 
-  return <div ref={ref} className={`reveal ${visible ? 'is-visible' : ''} ${className}`}>{children}</div>
+  return <div ref={ref} className={`reveal ${enhanced ? 'reveal-enhanced' : ''} ${visible ? 'is-visible' : ''} ${className}`}>{children}</div>
+}
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.7)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return <button className={`back-to-top ${visible ? 'is-visible' : ''}`} type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>↑</button>
 }
 
 function ContentSections() {
@@ -91,6 +110,7 @@ function ContentSections() {
       <MemesSection />
       <JoinSection />
       <SiteFooter />
+      <BackToTop />
     </div>
   )
 }
@@ -198,7 +218,7 @@ function MemesSection() {
         <Reveal className="memes-heading"><h2 id="memes-title">SPREAD THE WORD</h2></Reveal>
         <Reveal className="meme-gallery" aria-label="Community meme gallery">
           <div className="meme-gallery-row meme-gallery-row-forward"><div className="meme-gallery-track">{memeCards.map((meme, index) => <MemeCard key={`forward-${index}`} meme={meme} index={index} />)}{memeCards.map((meme, index) => <MemeCard key={`forward-copy-${index}`} meme={meme} index={index} />)}</div></div>
-          <div className="meme-slogan">BUY QUADRILLION OR STAY POOR</div>
+          <div className="meme-slogan" aria-label="BUY QUADRILLION OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLION OR STAY POOR</span><span aria-hidden="true">BUY QUADRILLION OR STAY POOR</span></div></div>
           <div className="meme-gallery-row meme-gallery-row-reverse"><div className="meme-gallery-track">{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-${index}`} meme={meme} index={index} />)}{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-copy-${index}`} meme={meme} index={index} />)}</div></div>
         </Reveal>
         <div className="meme-actions"><a className={`meme-submit-button ${googleFormUrl ? '' : 'is-unconfigured'}`} href={googleFormUrl || undefined} target={googleFormUrl ? '_blank' : undefined} rel="noreferrer" aria-disabled={!googleFormUrl} onClick={(event) => { if (!googleFormUrl) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
