@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import type { ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
 
 const navItems = [
   { label: 'Why QUAD', href: '#why-quad' },
@@ -11,6 +11,42 @@ const navItems = [
   { label: 'Bridge to Canton', href: '#bridge' },
   { label: 'Join Quadrillion', href: '#join-quadrillion' },
 ]
+
+let activeScrollFrame: number | null = null
+
+function easeInOutCubic(value: number) {
+  return value < 0.5 ? 4 * value ** 3 : 1 - ((-2 * value + 2) ** 3) / 2
+}
+
+function smoothScrollTo(target: number, duration = 1050) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.scrollTo(0, target)
+    return
+  }
+  if (activeScrollFrame !== null) cancelAnimationFrame(activeScrollFrame)
+  const start = window.scrollY
+  const distance = target - start
+  const startedAt = performance.now()
+  const step = (now: number) => {
+    const progress = Math.min((now - startedAt) / duration, 1)
+    window.scrollTo(0, start + distance * easeInOutCubic(progress))
+    if (progress < 1) activeScrollFrame = requestAnimationFrame(step)
+    else activeScrollFrame = null
+  }
+  activeScrollFrame = requestAnimationFrame(step)
+}
+
+function navigateToSection(event: MouseEvent<HTMLAnchorElement>, href: string, closeMenu?: () => void) {
+  event.preventDefault()
+  const target = document.querySelector(href)
+  if (!(target instanceof HTMLElement)) return
+  closeMenu?.()
+  window.setTimeout(() => {
+    const offset = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 78
+    smoothScrollTo(window.scrollY + target.getBoundingClientRect().top - offset - 14)
+    window.history.replaceState(null, '', href)
+  }, closeMenu ? 300 : 0)
+}
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -31,7 +67,7 @@ function Header() {
           <span>$QUAD</span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
+          {navItems.map((item) => <a key={item.href} href={item.href} onClick={(event) => navigateToSection(event, item.href)}>{item.label}</a>)}
         </nav>
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen((open) => !open)}>
           <span>{menuOpen ? 'Close' : 'Menu'}</span>
@@ -41,7 +77,7 @@ function Header() {
       <div className={`menu-backdrop ${menuOpen ? 'is-visible' : ''}`} aria-hidden="true" onClick={() => setMenuOpen(false)} />
       <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} id="mobile-menu" aria-hidden={!menuOpen}>
         <nav aria-label="Mobile navigation">
-          {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}
+          {navItems.map((item) => <a key={item.href} href={item.href} onClick={(event) => navigateToSection(event, item.href, () => setMenuOpen(false))}>{item.label}<span aria-hidden="true">↗</span></a>)}
         </nav>
       </div>
       <div className="ticker" aria-label="QUAD announcement">
@@ -60,7 +96,7 @@ function Reveal({ children, className = '' }: { children: ReactNode; className?:
     const node = ref.current
     if (!node) return
     setEnhanced(true)
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.08, rootMargin: '12% 0px 12% 0px' })
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.04, rootMargin: '8% 0px 8% 0px' })
     observer.observe(node)
     return () => observer.disconnect()
   }, [])
@@ -78,7 +114,7 @@ function BackToTop() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return <button className={`back-to-top ${visible ? 'is-visible' : ''}`} type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>↑</button>
+  return <button className={`back-to-top ${visible ? 'is-visible' : ''}`} type="button" aria-label="Back to top" onClick={() => smoothScrollTo(0, Math.min(1200, Math.max(700, window.scrollY * 0.7)))}>↑</button>
 }
 
 function ContentSections() {
