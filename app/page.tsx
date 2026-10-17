@@ -248,13 +248,43 @@ function MemeCard({ meme, index }: { meme: (typeof memeImages)[number] | null; i
 }
 
 function MemesSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const sloganRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const slogan = sloganRef.current
+    if (!section || !slogan) return
+    let frame: number | null = null
+    const update = () => {
+      frame = null
+      const rect = section.getBoundingClientRect()
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const travel = reducedMotion ? 20 : (window.matchMedia('(max-width: 700px)').matches ? 90 : 180)
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)))
+      const offset = (progress - 0.5) * travel
+      slogan.style.setProperty('--scroll-slogan-x', `${offset.toFixed(2)}px`)
+    }
+    const onScroll = () => {
+      if (frame === null) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      if (frame !== null) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
   return (
-    <section id="memes" className="content-section memes-section" aria-labelledby="memes-title">
+    <section ref={sectionRef} id="memes" className="content-section memes-section" aria-labelledby="memes-title">
       <div className="section-inner memes-inner">
         <Reveal className="memes-heading"><h2 id="memes-title">SPREAD THE WORD</h2></Reveal>
         <Reveal className="meme-gallery" aria-label="Community meme gallery">
           <div className="meme-gallery-row meme-gallery-row-forward"><div className="meme-gallery-track">{memeCards.map((meme, index) => <MemeCard key={`forward-${index}`} meme={meme} index={index} />)}{memeCards.map((meme, index) => <MemeCard key={`forward-copy-${index}`} meme={meme} index={index} />)}</div></div>
-          <div className="meme-slogan" aria-label="BUY QUADRILLIONS OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLIONS OR STAY POOR</span><span aria-hidden="true">BUY QUADRILLIONS OR STAY POOR</span></div></div>
+          <div ref={sloganRef} className="meme-slogan" aria-label="BUY QUADRILLIONS OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /> BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /></span><span aria-hidden="true">BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /> BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /></span></div></div>
           <div className="meme-gallery-row meme-gallery-row-reverse"><div className="meme-gallery-track">{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-${index}`} meme={meme} index={index} />)}{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-copy-${index}`} meme={meme} index={index} />)}</div></div>
         </Reveal>
         <div className="meme-actions"><a className={`meme-submit-button ${googleFormUrl ? '' : 'is-unconfigured'}`} href={googleFormUrl || undefined} target={googleFormUrl ? '_blank' : undefined} rel="noreferrer" aria-disabled={!googleFormUrl} onClick={(event) => { if (!googleFormUrl) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
@@ -325,7 +355,7 @@ export default function Page() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">COMMUNITY MEME / CANTON NETWORK</p>
-          <h1 id="hero-title"><span>QUADRILLIONS</span><em>AFTER A TRILLION.</em></h1>
+          <h1 id="hero-title"><span>QUADRILLION</span><em>AFTER A TRILLION.</em></h1>
           <p className="hero-description">They kept saying <strong>quadrillions.</strong><br />We made it a ticker.</p>
           <div className="hero-actions">
             <button className="buy-button" type="button">BUY $QUAD <span aria-hidden="true">↗</span></button>
