@@ -9,7 +9,7 @@ const navItems = [
   { label: 'Memes', href: '#memes' },
   { label: 'Receipts', href: '#receipts' },
   { label: 'Bridge to Canton', href: '#bridge' },
-  { label: 'Join Quadrillion', href: '#join-quadrillion' },
+  { label: 'Join Quadrillions', href: '#join-quadrillion' },
 ]
 
 let activeScrollFrame: number | null = null
@@ -122,10 +122,10 @@ function ContentSections() {
     <div className="content-sections">
       <section id="what-is-this" className="content-section what-section" aria-labelledby="what-title">
         <div className="section-inner what-redesign-inner">
-          <Reveal className="what-redesign-heading"><h2 id="what-title">WTF IS QUADRILLION?</h2></Reveal>
+          <Reveal className="what-redesign-heading"><h2 id="what-title">WTF IS QUADRILLIONS?</h2></Reveal>
           <div className="what-redesign-cards">
-            <Reveal className="what-redesign-card"><p>QUADRILLION is the first community driven meme on Canton</p></Reveal>
-            <Reveal className="what-redesign-card what-redesign-card-two"><p>Canton is the only public blockchain with privacy that works, powering Wall Street and trillions onchain (soon <span>Quadrillion</span>).</p></Reveal>
+            <Reveal className="what-redesign-card"><p>QUADRILLIONS is the first community driven meme on Canton</p></Reveal>
+            <Reveal className="what-redesign-card what-redesign-card-two"><p>Canton is the only public blockchain with privacy that works, powering Wall Street and trillions onchain (soon <span>Quadrillions</span>).</p></Reveal>
           </div>
         </div>
       </section>
@@ -133,7 +133,7 @@ function ContentSections() {
         <div className="section-inner lore-inner">
           <Reveal className="lore-heading-wrap"><h2 id="why-title">THE LORE</h2></Reveal>
           <div className="lore-story">
-            <div className="lore-beat"><Reveal><h3>the ticker wasn&apos;t from a random word.</h3></Reveal><Reveal><p>QUADRILLION came from the same conversations the Canton team keeps having, the ones where they talk about the real size of traditional finance. The DTCC alone moves roughly 3.7 to 4.7 quadrillion dollars in transactions every year. Canton was built to bring that scale onchain.</p></Reveal></div>
+            <div className="lore-beat"><Reveal><h3>the ticker wasn&apos;t from a random word.</h3></Reveal><Reveal><p>QUADRILLIONS came from the same conversations the Canton team keeps having, the ones where they talk about the real size of traditional finance. The DTCC alone moves roughly 3.7 to 4.7 quadrillion dollars in transactions every year. Canton was built to bring that scale onchain.</p></Reveal></div>
             <div className="lore-beat"><Reveal><h3>They kept saying the word.</h3></Reveal><Reveal><p>They kept pointing at the number. So the community took the biggest number they kept repeating and turned it into a coin.</p></Reveal></div>
             <div className="lore-beat"><Reveal><h3>That&apos;s the whole idea.</h3></Reveal><Reveal><p>A simple piece of the conversation that everyone can hold, trade, and carry while the actual quadrillions slowly start moving on the network. The name isn&apos;t random. It&apos;s a reminder of the size of the opportunity.</p></Reveal></div>
           </div>
@@ -221,19 +221,19 @@ function ReceiptsSection() {
     <section id="receipts" className="content-section receipts-section" aria-labelledby="receipts-title">
       <div className="section-inner receipts-inner">
         <Reveal className="receipts-heading"><h2 id="receipts-title">THE RECEIPTS</h2></Reveal>
-        <Reveal className="receipts-support">Quadrillion isn&apos;t just random. here are proofs of where it was mentioned</Reveal>
-        <div className="receipts-carousel" role="region" aria-label="Quadrillion source posts">
+        <Reveal className="receipts-support">Quadrillions isn&apos;t just random. here are proofs of where it was mentioned</Reveal>
+        <div className="receipts-carousel" role="region" aria-label="Quadrillions source posts">
           <div className="receipts-track">{receipts.map(([title, source, description, href], index) => <Reveal key={href} className={`receipt-card receipt-card-${index % 4}`}><a href={href} target="_blank" rel="noreferrer"><span className="receipt-index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><span className="receipt-source">{source}</span>{description ? <p>{description}</p> : <p>OPEN ORIGINAL POST</p>}<span className="receipt-view">VIEW POST ↗</span></a></Reveal>)}</div>
         </div>
-        <p className="receipts-disclaimer">QUADRILLION ($QUAD) is an independent, community-driven meme project. It is not affiliated with, endorsed by, sponsored by, or officially connected to Canton Network, Digital Asset, or their teams. References above are provided for context and do not imply their support or approval of QUAD.</p>
+        <p className="receipts-disclaimer">QUADRILLIONS ($QUAD) is an independent, community-driven meme project. It is not affiliated with, endorsed by, sponsored by, or officially connected to Canton Network, Digital Asset, or their teams. References above are provided for context and do not imply their support or approval of QUAD.</p>
       </div>
     </section>
   )
 }
 
 const memeImages = [
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9df720a683513abf2b2477f2674b38f1-PcxSrEZfjDAzyTYEDErRWBmX6qBB6b.jpeg', alt: 'Quadrillion meme showing a crowded parliamentary scene' },
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5793-TBcTTh202wNXngwcrUuTFBwlfQ2y06.gif', alt: 'Animated Quadrillion meme showing money flying from a podium' },
+  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9df720a683513abf2b2477f2674b38f1-PcxSrEZfjDAzyTYEDErRWBmX6qBB6b.jpeg', alt: 'Quadrillions meme showing a crowded parliamentary scene' },
+  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5793-TBcTTh202wNXngwcrUuTFBwlfQ2y06.gif', alt: 'Animated Quadrillions meme showing money flying from a podium' },
 ]
 
 const memeCards = [memeImages[0], null, null, memeImages[1], null, null, null, null]
@@ -254,7 +254,7 @@ function MemesSection() {
         <Reveal className="memes-heading"><h2 id="memes-title">SPREAD THE WORD</h2></Reveal>
         <Reveal className="meme-gallery" aria-label="Community meme gallery">
           <div className="meme-gallery-row meme-gallery-row-forward"><div className="meme-gallery-track">{memeCards.map((meme, index) => <MemeCard key={`forward-${index}`} meme={meme} index={index} />)}{memeCards.map((meme, index) => <MemeCard key={`forward-copy-${index}`} meme={meme} index={index} />)}</div></div>
-          <div className="meme-slogan" aria-label="BUY QUADRILLION OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLION OR STAY POOR</span><span aria-hidden="true">BUY QUADRILLION OR STAY POOR</span></div></div>
+          <div className="meme-slogan" aria-label="BUY QUADRILLIONS OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLIONS OR STAY POOR</span><span aria-hidden="true">BUY QUADRILLIONS OR STAY POOR</span></div></div>
           <div className="meme-gallery-row meme-gallery-row-reverse"><div className="meme-gallery-track">{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-${index}`} meme={meme} index={index} />)}{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-copy-${index}`} meme={meme} index={index} />)}</div></div>
         </Reveal>
         <div className="meme-actions"><a className={`meme-submit-button ${googleFormUrl ? '' : 'is-unconfigured'}`} href={googleFormUrl || undefined} target={googleFormUrl ? '_blank' : undefined} rel="noreferrer" aria-disabled={!googleFormUrl} onClick={(event) => { if (!googleFormUrl) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
@@ -271,7 +271,7 @@ function JoinSection() {
   return (
     <section id="join-quadrillion" className="content-section join-section" aria-labelledby="join-title">
       <div className="section-inner join-inner">
-        <Reveal className="join-heading"><h2 id="join-title">JOIN QUADRILLION</h2></Reveal>
+        <Reveal className="join-heading"><h2 id="join-title">JOIN QUADRILLIONS</h2></Reveal>
         <Reveal className="join-copy"><p>The ticker is yours now. Spread the word.</p></Reveal>
         <div className="join-links"><Reveal><SocialLink href={quadXUrl} className="social-link-x"><span aria-hidden="true">𝕏</span> FOLLOW ON X</SocialLink></Reveal><Reveal><SocialLink href={telegramUrl} className="social-link-telegram"><span aria-hidden="true">✈</span> JOIN TELEGRAM</SocialLink></Reveal></div>
         <Reveal className="join-risk"><p>QUAD is a meme token created for entertainment, with no intrinsic value and no expectation of financial return. There is no formal team or guaranteed roadmap. Its value may fluctuate significantly, and you could lose the entire amount you spend. Nothing on this website is financial advice. Always do your own research and never spend more than you can afford to lose.</p></Reveal>
@@ -281,7 +281,7 @@ function JoinSection() {
 }
 
 function SiteFooter() {
-  return <footer className="site-footer"><span>© 2026 QUADRILLION ($QUAD)</span></footer>
+  return <footer className="site-footer"><span>© 2026 QUADRILLIONS ($QUAD)</span></footer>
 }
 
 function BillSection() {
@@ -290,12 +290,12 @@ function BillSection() {
   return (
     <section id="quadrillion-bill" className="bill-section content-section" aria-labelledby="bill-title">
       <div className="section-inner bill-inner">
-        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLION BILL.</span></h2></Reveal></div>
-        <Reveal className="bill-copy"><p className="bill-intro">if you&apos;re seeing this you deserve your own Quadrillion bill</p></Reveal>
+        <div className="bill-heading"><Reveal><h2 id="bill-title">THE<br /><span>QUADRILLIONS BILL.</span></h2></Reveal></div>
+        <Reveal className="bill-copy"><p className="bill-intro">if you&apos;re seeing this you deserve your own Quadrillions bill</p></Reveal>
         <Reveal className={`bill-stage ${flipped ? 'is-flipped' : ''}`}>
-          <button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillion bill to its front view' : 'Flip the Quadrillion bill'} onClick={() => setFlipped((value) => !value)}>
+          <button className="bill-flip" type="button" aria-label={flipped ? 'Return the Quadrillions bill to its front view' : 'Flip the Quadrillions bill'} onClick={() => setFlipped((value) => !value)}>
             <span className="bill-card">
-              <Image src="/quadrillion-banknote.jpeg" alt="Quadrillion novelty banknote" width={1200} height={550} priority />
+              <Image src="/quadrillion-banknote.jpeg" alt="Quadrillions novelty banknote" width={1200} height={550} priority />
               <span className="bill-back"><Image src="/quadrillion-banknote.jpeg" alt="" width={1200} height={550} /></span>
             </span>
           </button>
@@ -308,11 +308,11 @@ function BillSection() {
 
 function FloatingNote() {
   return (
-    <div className="artwork" aria-label="QUADRILLION novelty banknote">
+    <div className="artwork" aria-label="QUADRILLIONS novelty banknote">
       <div className="orbit orbit-one" aria-hidden="true" />
       <div className="orbit orbit-two" aria-hidden="true" />
       <div className="note-safe-zone">
-        <Image className="banknote" src="/quadrillion-banknote.jpeg" alt="A fictional ten-dollar QUADRILLION novelty banknote" width={1200} height={550} priority />
+        <Image className="banknote" src="/quadrillion-banknote.jpeg" alt="A fictional ten-dollar QUADRILLIONS novelty banknote" width={1200} height={550} priority />
       </div>
     </div>
   )
@@ -325,7 +325,7 @@ export default function Page() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">COMMUNITY MEME / CANTON NETWORK</p>
-          <h1 id="hero-title"><span>QUADRILLION</span><em>AFTER A TRILLION.</em></h1>
+          <h1 id="hero-title"><span>QUADRILLIONS</span><em>AFTER A TRILLION.</em></h1>
           <p className="hero-description">They kept saying <strong>quadrillions.</strong><br />We made it a ticker.</p>
           <div className="hero-actions">
             <button className="buy-button" type="button">BUY $QUAD <span aria-hidden="true">↗</span></button>
