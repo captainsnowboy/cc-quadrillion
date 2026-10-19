@@ -124,8 +124,8 @@ function ContentSections() {
         <div className="section-inner what-redesign-inner">
           <Reveal className="what-redesign-heading"><h2 id="what-title">WTF IS QUADRILLIONS?</h2></Reveal>
           <div className="what-redesign-cards">
-            <Reveal className="what-redesign-card"><p>QUADRILLIONS is the first community driven meme on Canton</p></Reveal>
-            <Reveal className="what-redesign-card what-redesign-card-two"><p>Canton is the only public blockchain with privacy that works, powering Wall Street and trillions onchain (soon <span>Quadrillions</span>).</p></Reveal>
+<Reveal className="what-redesign-card"><p>QUADRILLIONS is the first community driven meme on the Canton network</p></Reveal>
+          <Reveal className="what-redesign-card what-redesign-card-two"><p>Canton network is the only public blockchain with privacy that works, powering Wall Street and trillions onchain (soon <span>Quadrillions</span>)</p></Reveal>
           </div>
         </div>
       </section>
@@ -156,7 +156,7 @@ function BridgeSection() {
     ['01', 'GET A WALLET', 'Go to oneswap.cc, sign up and create a wallet'],
     ['02', 'CONNECT EVM', 'Go to "bridge" and connect your evm wallet'],
     ['03', 'BRIDGE ASSETS', 'Bridge your assets from EVM chains to CC on the Canton network'],
-    ['04', '', ''],
+    ['04', 'BUY $QUAD', 'Buy $QUAD and delete your sell button'],
   ]
 
   return (
@@ -164,9 +164,9 @@ function BridgeSection() {
       <div className="section-inner bridge-inner">
         <Reveal className="bridge-heading"><h2 id="bridge-title">BRIDGE TO CANTON</h2></Reveal>
         <div className="bridge-content-wrap">
-          <div className="bridge-steps">{steps.map(([number, title, copy]) => <Reveal key={number} className="bridge-step"><span className="step-number">{number}</span>{title ? <div><h3>{title}</h3><p>{copy}</p></div> : null}</Reveal>)}</div>
+          <div className="bridge-steps">{steps.map(([number, title, copy]) => <Reveal key={number} className="bridge-step"><span className="step-number">{number}</span><div><h3>{title}</h3><p>{number === '01' ? <>Go to <a className="oneswap-inline-link" href={externalLinks.ONESWAP_URL} target="_blank" rel="noopener noreferrer">oneswap.cc</a>, sign up and create a wallet</> : copy}</p></div></Reveal>)}</div>
+          <span className="bridge-arrow" aria-hidden="true"><span>↘</span></span>
           <Reveal className="bridge-buy-wrap"><button className="bridge-buy-button" type="button">Buy $QUAD</button></Reveal>
-          <div className="bridge-coming-soon" aria-hidden="true">COMING SOON</div>
         </div>
       </div>
     </section>
@@ -237,9 +237,14 @@ const memeImages = [
 ]
 
 const memeCards = [memeImages[0], null, null, memeImages[1], null, null, null, null]
-const googleFormUrl = ''
-const quadXUrl = ''
-const telegramUrl = ''
+
+const externalLinks = {
+  QUADRILLIONS_X_URL: 'https://x.com/to_quadrillions',
+  QUADRILLIONS_TELEGRAM_URL: '',
+  QUADRILLIONS_MEME_FORM_URL: 'https://forms.gle/K1yZ24NPZgfGiH3j9',
+  QUADRILLIONS_BUY_URL: '',
+  ONESWAP_URL: 'https://oneswap.cc/',
+} as const
 
 function MemeCard({ meme, index }: { meme: (typeof memeImages)[number] | null; index: number }) {
   return <article className={`meme-gallery-card ${meme ? 'has-artwork' : 'is-empty'} meme-gallery-card-${index % 4}`}>
@@ -287,7 +292,7 @@ function MemesSection() {
           <div ref={sloganRef} className="meme-slogan" aria-label="BUY QUADRILLIONS OR STAY POOR"><div className="meme-slogan-track"><span>BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /> BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /></span><span aria-hidden="true">BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /> BUY QUADRILLIONS OR STAY POOR <i className="slogan-polygon" aria-hidden="true" /></span></div></div>
           <div className="meme-gallery-row meme-gallery-row-reverse"><div className="meme-gallery-track">{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-${index}`} meme={meme} index={index} />)}{[...memeCards].reverse().map((meme, index) => <MemeCard key={`reverse-copy-${index}`} meme={meme} index={index} />)}</div></div>
         </Reveal>
-        <div className="meme-actions"><a className={`meme-submit-button ${googleFormUrl ? '' : 'is-unconfigured'}`} href={googleFormUrl || undefined} target={googleFormUrl ? '_blank' : undefined} rel="noreferrer" aria-disabled={!googleFormUrl} onClick={(event) => { if (!googleFormUrl) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
+        <div className="meme-actions"><a className={`meme-submit-button ${externalLinks.QUADRILLIONS_MEME_FORM_URL ? '' : 'is-unconfigured'}`} href={externalLinks.QUADRILLIONS_MEME_FORM_URL || undefined} target={externalLinks.QUADRILLIONS_MEME_FORM_URL ? '_blank' : undefined} rel="noreferrer" aria-disabled={!externalLinks.QUADRILLIONS_MEME_FORM_URL} onClick={(event) => { if (!externalLinks.QUADRILLIONS_MEME_FORM_URL) event.preventDefault() }}>SUBMIT A MEME <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
   )
@@ -303,7 +308,7 @@ function JoinSection() {
       <div className="section-inner join-inner">
         <Reveal className="join-heading"><h2 id="join-title">JOIN QUADRILLIONS</h2></Reveal>
         <Reveal className="join-copy"><p>The ticker is yours now. Spread the word.</p></Reveal>
-        <div className="join-links"><Reveal><SocialLink href={quadXUrl} className="social-link-x"><span aria-hidden="true">𝕏</span> FOLLOW ON X</SocialLink></Reveal><Reveal><SocialLink href={telegramUrl} className="social-link-telegram"><span aria-hidden="true">✈</span> JOIN TELEGRAM</SocialLink></Reveal></div>
+        <div className="join-links"><Reveal><SocialLink href={externalLinks.QUADRILLIONS_X_URL} className="social-link-x"><span aria-hidden="true">𝕏</span> FOLLOW ON X</SocialLink></Reveal><Reveal><SocialLink href={externalLinks.QUADRILLIONS_TELEGRAM_URL} className="social-link-telegram"><span aria-hidden="true">✈</span> JOIN TELEGRAM</SocialLink></Reveal></div>
         <Reveal className="join-risk"><p>QUAD is a meme token created for entertainment, with no intrinsic value and no expectation of financial return. There is no formal team or guaranteed roadmap. Its value may fluctuate significantly, and you could lose the entire amount you spend. Nothing on this website is financial advice. Always do your own research and never spend more than you can afford to lose.</p></Reveal>
       </div>
     </section>
