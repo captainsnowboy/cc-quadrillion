@@ -237,8 +237,8 @@ const memeImages = [
 ]
 
 const memeCards = [memeImages[0], null, null, memeImages[1], null, null, null, null]
-const googleFormUrl = ''
-const quadXUrl = ''
+  const googleFormUrl = 'https://forms.gle/K1yZ24NPZgfGiH3j9'
+  const quadXUrl = 'https://x.com/to_quadrillions'
 const telegramUrl = ''
 
 function MemeCard({ meme, index }: { meme: (typeof memeImages)[number] | null; index: number }) {
