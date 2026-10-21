@@ -321,7 +321,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .rules-inner { max-width: 1120px; }
 .rules-heading { display: flex; justify-content: flex-start; margin-bottom: clamp(42px, 6vw, 76px); }
 .rules-heading h2 { max-width: 900px; margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(44px, 6vw, 82px); font-weight: 400; line-height: .88; letter-spacing: .005em; transform: rotate(-1.2deg); }
-.rules-list { display: flex; flex-direction: column; gap: clamp(36px, 5vw, 62px); }
+.rules-list { display: flex; flex-direction: column; gap: clamp(30px, 4vw, 48px); }
 .rule-item { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 clamp(14px, 2vw, 28px); max-width: 960px; }
 .rule-item:nth-child(odd) { align-self: flex-start; }
 .rule-item:nth-child(even) { align-self: flex-end; max-width: 900px; }
@@ -352,7 +352,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 
   .rules-heading { margin-bottom: 36px; }
   .rules-heading h2 { max-width: 430px; font-size: clamp(38px, 10.5vw, 58px); line-height: .9; transform: rotate(-1deg); }
-  .rules-list { gap: 30px; }
+  .rules-list { gap: 24px; }
   .rule-item, .rule-item:nth-child(even) { display: block; align-self: stretch; max-width: 100%; padding-left: 0; }
   .rule-item:nth-child(even) { padding-left: 14px; }
   .rule-item h3 { display: block; width: max-content; max-width: 100%; font-size: clamp(18px, 5.35vw, 28px); line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
