@@ -303,10 +303,9 @@ function MemesSection() {
 function RulesSection() {
   const rules = [
     ['1. NO ROADMAP.', "No roadmap to sell you a dream. No artificial deadlines. Let things happen when they're ready."],
-    ['2. NO EMPTY PROMISES.', 'No fake dates. No guaranteed outcomes. We say what we mean and let the rest speak for itself.'],
-    ['3. THE COMMUNITY MAKES THE LORE.', "The memes, the ideas, the next chapter. This isn't a one-man show."],
-    ['4. THINK IN QUADRILLIONS.', "One quadrillion. Fifteen zeros. Apparently, ordinary numbers weren't enough."],
-    ["5. IT'S A MEME.", "Never take the joke too seriously. We're here to make culture, not promises about the market."],
+    ['2. THE COMMUNITY MAKES THE LORE.', "The memes, the ideas, the next chapter. This isn't a one-man show."],
+    ['3. THINK IN QUADRILLIONS.', "One quadrillion. Fifteen zeros. Apparently, ordinary numbers weren't enough."],
+    ["4. IT'S A MEME.", "Never take the joke too seriously. We're here to make culture, not promises about the market."],
   ]
 
   return (
