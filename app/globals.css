@@ -317,16 +317,6 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 .meme-submit-button.is-unconfigured { cursor: not-allowed; opacity: .72; }
 @keyframes meme-marquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
 
-.rules-section { background: var(--ivory); color: var(--ink); }
-  .rules-inner { max-width: 1120px; }
-  .rules-heading { display: flex; justify-content: flex-start; margin-bottom: clamp(62px, 8vw, 108px); }
-  .rules-heading h2 { max-width: 900px; margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(58px, 8.2vw, 112px); font-weight: 400; line-height: .9; letter-spacing: .005em; }
-  .rules-list { display: flex; flex-direction: column; gap: clamp(44px, 6vw, 78px); }
-  .rule-item { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 clamp(16px, 2vw, 28px); max-width: 960px; }
-  .rule-item:nth-child(odd) { align-self: flex-start; }
-  .rule-item:nth-child(even) { align-self: flex-end; max-width: 900px; }
-  .rule-item h3 { flex: 0 1 auto; margin: 0; color: var(--ink); font-family: "Lilita One", Impact, "Arial Black", sans-serif; font-size: clamp(31px, 4.2vw, 58px); font-weight: 400; line-height: .95; letter-spacing: .005em; }
-  .rule-item p { flex: 1 1 260px; max-width: 430px; margin: 0; color: #91a18b; font-size: clamp(18px, 2vw, 27px); font-weight: 700; line-height: 1.45; }
   .join-section { background: var(--ink); color: var(--ivory); overflow: hidden; }
   .join-inner { max-width: 1120px; }
 .join-heading { display: flex; justify-content: flex-start; }
@@ -347,14 +337,7 @@ h1 em { color: var(--coral); font-style: normal; margin-top: .1em; }
 
 @media (max-width: 700px) {
   .content-section { padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 24px); }
-  .rules-heading { margin-bottom: 54px; }
-  .rules-heading h2 { max-width: 430px; font-size: clamp(52px, 15vw, 78px); line-height: .9; }
-  .rules-list { gap: 42px; }
-  .rule-item, .rule-item:nth-child(even) { align-self: stretch; max-width: 100%; gap: 8px 12px; }
-  .rule-item h3 { font-size: clamp(29px, 8vw, 42px); white-space: normal; }
-  .rule-item p { flex-basis: 190px; max-width: 300px; font-size: 18px; line-height: 1.4; }
-  .rule-item:nth-child(even) { padding-left: 18px; }
-  
+
   .what-redesign-inner { max-width: 100%; }
   .what-redesign-heading { margin-bottom: 34px; }
   .what-redesign-heading h2 { font-size: clamp(23px, 6.2vw, 34px); letter-spacing: 0; }
