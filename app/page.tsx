@@ -301,11 +301,11 @@ function MemesSection() {
 
 function RulesSection() {
   const rules = [
-    ['1. NO ROADMAP.', 'No roadmap to sell you a dream. No artificial deadlines. Let things happen when they\'re ready.'],
-    ['2. NO EMPTY PROMISES.', 'No fake dates. No guaranteed outcomes. We say what we mean and let the rest speak for itself.'],
-    ['3. THE COMMUNITY MAKES THE LORE.', 'The memes, the ideas, the next chapter. This isn\'t a one-man show.'],
-    ['4. THINK IN QUADRILLIONS.', 'One quadrillion. Fifteen zeros. Apparently, ordinary numbers weren\'t enough.'],
-    ['5. IT\'S A MEME.', 'Never take the joke too seriously. We\'re here to make culture, not promises about the market.'],
+    ['1. NO ROADMAP.', 'Roadmaps are promises. We don\'t do promises.'],
+    ['2. NO DATES.', 'Things drop when they\'re ready. You\'ll hear it on X.'],
+    ['3. COMMUNITY PICKS.', 'The next cards, the next moves. You vote, we print.'],
+    ['4. STRUCTURE FIRST.', 'Buybacks, rewards, merch. Built before hyped.'],
+    ["5. IT'S A MEME.", 'Never forget it. If it stops being fun, we\'re doing it wrong.'],
   ]
 
   return (
