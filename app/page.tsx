@@ -144,7 +144,8 @@ function ContentSections() {
       <TokenomicsSection />
       <ReceiptsSection />
         <MemesSection />
-  <JoinSection />
+        <RulesSection />
+        <JoinSection />
       <SiteFooter />
       <BackToTop />
     </div>
@@ -298,6 +299,27 @@ function MemesSection() {
   )
 }
 
+
+function RulesSection() {
+  const rules = [
+    ['1. NO ROADMAP.', "No roadmap to sell you a dream. No artificial deadlines. Let things happen when they're ready."],
+    ['2. NO EMPTY PROMISES.', 'No fake dates. No guaranteed outcomes. We say what we mean and let the rest speak for itself.'],
+    ['3. THE COMMUNITY MAKES THE LORE.', "The memes, the ideas, the next chapter. This isn't a one-man show."],
+    ['4. THINK IN QUADRILLIONS.', "One quadrillion. Fifteen zeros. Apparently, ordinary numbers weren't enough."],
+    ["5. IT'S A MEME.", "Never take the joke too seriously. We're here to make culture, not promises about the market."],
+  ]
+
+  return (
+    <section id="quadrillions-rules" className="content-section rules-section" aria-labelledby="rules-title">
+      <div className="section-inner rules-inner">
+        <Reveal className="rules-heading"><h2 id="rules-title">THE QUADRILLIONS RULES.</h2></Reveal>
+        <div className="rules-list">
+          {rules.map(([heading, description]) => <Reveal key={heading} className="rule-item"><h3>{heading}</h3><p>{description}</p></Reveal>)}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 function SocialLink({ href, children, className }: { href: string; children: ReactNode; className: string }) {
   return <a className={`social-link ${className} ${href ? '' : 'is-unconfigured'}`} href={href || undefined} target={href ? '_blank' : undefined} rel="noreferrer" aria-disabled={!href} onClick={(event) => { if (!href) event.preventDefault() }}>{children}</a>
