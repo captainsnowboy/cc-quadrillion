@@ -4,6 +4,9 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent, ReactNode } from 'react'
 
+const QUAD_LOGO_URL = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_6147-qryBYLZndfO3AKiFfh0hOE4EYaD36T.png'
+const QUAD_BUY_URL = ''
+
 const navItems = [
   { label: 'Why QUAD', href: '#why-quad' },
   { label: 'Memes', href: '#memes' },
@@ -63,8 +66,8 @@ function Header() {
     <>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="QUAD home">
-          <Image className="brand-logo" src="/quad-logo.png" alt="QUAD 10 to the 15th logo" width={48} height={48} priority />
-          <span>$QUAD</span>
+          <img className="brand-logo" src={QUAD_LOGO_URL} alt="QUAD ribbon logo" width={48} height={48} />
+          {QUAD_BUY_URL ? <a className="brand-token-link" href={QUAD_BUY_URL} target="_blank" rel="noopener noreferrer">$QUAD</a> : <span>$QUAD</span>}
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => <a key={item.href} href={item.href} onClick={(event) => navigateToSection(event, item.href)}>{item.label}</a>)}
@@ -166,8 +169,7 @@ function BridgeSection() {
         <Reveal className="bridge-heading"><h2 id="bridge-title">BRIDGE TO CANTON</h2></Reveal>
         <div className="bridge-content-wrap">
           <div className="bridge-steps">{steps.map(([number, title, copy]) => <Reveal key={number} className="bridge-step"><span className="step-number">{number}</span><div><h3>{title}</h3><p>{number === '01' ? <>Go to <a className="oneswap-inline-link" href={externalLinks.ONESWAP_URL} target="_blank" rel="noopener noreferrer">oneswap.cc</a>, sign up and create a wallet</> : copy}</p></div></Reveal>)}</div>
-          <span className="bridge-arrow" aria-hidden="true"><span>↘</span></span>
-          <Reveal className="bridge-buy-wrap"><button className="bridge-buy-button" type="button">Buy $QUAD</button></Reveal>
+          <Reveal className="bridge-buy-wrap">{QUAD_BUY_URL ? <a className="bridge-buy-button" href={QUAD_BUY_URL} target="_blank" rel="noopener noreferrer">Buy $QUAD</a> : <button className="bridge-buy-button" type="button" disabled>Buy $QUAD</button>}</Reveal>
         </div>
       </div>
     </section>
@@ -232,24 +234,31 @@ function ReceiptsSection() {
   )
 }
 
-const memeImages = [
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9df720a683513abf2b2477f2674b38f1-PcxSrEZfjDAzyTYEDErRWBmX6qBB6b.jpeg', alt: 'Quadrillions meme showing a crowded parliamentary scene' },
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5793-TBcTTh202wNXngwcrUuTFBwlfQ2y06.gif', alt: 'Animated Quadrillions meme showing money flying from a podium' },
+type MemeMedia =
+  | { type: 'image'; src: string; alt: string }
+  | { type: 'video'; src: string; alt: string; poster?: string }
+
+// Add future meme assets here; each entry maps directly to one gallery card.
+const memeMedia: MemeMedia[] = [
+  { type: 'image', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9df720a683513abf2b2477f2674b38f1-PcxSrEZfjDAzyTYEDErRWBmX6qBB6b.jpeg', alt: 'Quadrillions meme showing a crowded parliamentary scene' },
+  { type: 'image', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5793-TBcTTh202wNXngwcrUuTFBwlfQ2y06.gif', alt: 'Animated Quadrillions meme showing money flying from a podium' },
 ]
 
-const memeCards = [memeImages[0], null, null, memeImages[1], null, null, null, null]
+const memeImages = memeMedia.filter((meme): meme is Extract<MemeMedia, { type: 'image' }> => meme.type === 'image')
+
+const memeCards: Array<MemeMedia | null> = [memeMedia[0], null, null, memeMedia[1], null, null, null, null]
 
 const externalLinks = {
   QUADRILLIONS_X_URL: 'https://x.com/to_quadrillions',
-  QUADRILLIONS_TELEGRAM_URL: '',
+  QUADRILLIONS_TELEGRAM_URL: 'https://t.me/to_quadrillions',
   QUADRILLIONS_MEME_FORM_URL: 'https://forms.gle/K1yZ24NPZgfGiH3j9',
   QUADRILLIONS_BUY_URL: '',
   ONESWAP_URL: 'https://oneswap.cc/',
 } as const
 
-function MemeCard({ meme, index }: { meme: (typeof memeImages)[number] | null; index: number }) {
+function MemeCard({ meme, index }: { meme: MemeMedia | null; index: number }) {
   return <article className={`meme-gallery-card ${meme ? 'has-artwork' : 'is-empty'} meme-gallery-card-${index % 4}`}>
-    {meme ? <img src={meme.src} alt={meme.alt} /> : <span className="empty-card-label">COMMUNITY DROP</span>}
+    {meme?.type === 'video' ? <video src={meme.src} poster={meme.poster} controls muted playsInline preload="metadata" aria-label={meme.alt} /> : meme ? <img src={meme.src} alt={meme.alt} /> : <span className="empty-card-label">COMMUNITY DROP</span>}
   </article>
 }
 
@@ -385,7 +394,7 @@ export default function Page() {
           <h1 id="hero-title"><span>QUADRILLION</span><em>AFTER A TRILLION.</em></h1>
           <p className="hero-description">They kept saying <strong>quadrillions.</strong><br />We made it a ticker.</p>
           <div className="hero-actions">
-            <button className="buy-button" type="button">BUY $QUAD <span aria-hidden="true">↗</span></button>
+            {QUAD_BUY_URL ? <a className="buy-button" href={QUAD_BUY_URL} target="_blank" rel="noopener noreferrer">BUY $QUAD <span aria-hidden="true">↗</span></a> : <button className="buy-button" type="button" disabled>BUY $QUAD <span aria-hidden="true">↗</span></button>}
             <a className="scroll-link" href="#what-is-this">WHAT IS THIS? <span className="scroll-arrow" aria-hidden="true">↓</span></a>
           </div>
         </div>

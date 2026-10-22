@@ -19,7 +19,7 @@ export function SiteHeader() {
       <header className="site-header">
         <div className="header-inner">
           <a className="brand" href="#top" aria-label="QUAD home" onClick={() => setIsOpen(false)}>
-            <Image className="brand-mark" src="/quad-logo.png" alt="Gold QUAD 10 to the 15th logo" width={44} height={44} priority />
+            <img className="brand-mark" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_6147-qryBYLZndfO3AKiFfh0hOE4EYaD36T.png" alt="QUAD ribbon logo" width={44} height={44} />
             <span>$QUAD</span>
           </a>
           <nav className="desktop-nav" aria-label="Primary navigation">
